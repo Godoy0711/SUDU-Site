@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seja um Revendedor SUDU</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f8f8;
+            color: #333;
+        }
+        
+        .logo-container {
+            background-color: #000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 5%;
+            position: fixed;
+            width: 100%;
+            height: 80px;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo-container img {
+            width: 60px;
+            height: auto;
+            cursor: pointer;
+            margin-right: 20px;
+        }
+        
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-menu a:hover {
+            color: #FFD700;
+        }
+        
+        .revendedor-header {
+            background-color: #2a5a8a;
+            color: white;
+            text-align: center;
+            padding: 120px 5% 60px;
+            margin-top: 60px;
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1593764592116-bfb2a97c642a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .revendedor-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+        
+        .revendedor-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 0 5%;
+        }
+        
+        .revendedor-form {
+            background: white;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 5px solid #FFD700;
+        }
+        
+        .form-title {
+            color: #2a5a8a;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            position: relative;
+        }
+        
+        .form-title:after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: #FFD700;
+            margin: 15px auto 0;
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2a5a8a;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: #f9f9f9;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #FFD700;
+            background: white;
+            outline: none;
+            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: #FFD700;
+            color: #2a5a8a;
+            border: none;
+            padding: 15px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+        
+        .submit-btn:hover {
+            background: #e6c200;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            color: #2a5a8a;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .back-link:hover {
+            color: #FFD700;
+        }
+        
+        footer {
+            background-color: #222;
+            color: white;
+            padding: 40px 5%;
+            text-align: center;
+        }
+        
+        .footer-content p {
+            margin-bottom: 10px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            background: #444;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: #FFD700;
+            color: #222;
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .revendedor-header {
+                padding: 100px 5% 40px;
+            }
+            
+            .revendedor-header h1 {
+                font-size: 2rem;
+            }
+            
+            .revendedor-form {
+                padding: 30px 20px;
+            }
+            
+            .nav-menu a {
+                margin-left: 15px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-container {
+                flex-direction: column;
+                padding: 10px;
+            }
+            
+            .logo-container img {
+                margin-bottom: 10px;
+            }
+            
+            .nav-menu {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .revendedor-header {
+                padding: 80px 5% 30px;
+                margin-top: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho com link para voltar -->
+    <div class="logo-container">
+        <a href="index.html">
+            <img src="./assets/Logo SUDU transparente.png" alt="SUDU">
+        </a>
+        <nav class="nav-menu">
+            <a href="index.html"><i class="fas fa-arrow-left"></i> Voltar ao Site</a>
+        </nav>
+    </div>
+
+    <!-- Formulário -->
+    <header class="revendedor-header">
+        <h1>TORNE-SE UM REVENDEDOR SUDU</h1>
+        <p>Preencha o formulário abaixo para fazer parte da nossa rede exclusiva de revendedores</p>
+    </header>
+
+    <div class="form-container">
+        <div class="revendedor-form">
+            <h2 class="form-title">CADASTRO DE REVENDEDOR</h2>
+            
+            <form id="revendedorForm">
+                <div class="form-group">
+                    <label for="nome">NOME COMPLETO*</label>
+                    <input type="text" id="nome" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="empresa">NOME DA EMPRESA*</label>
+                    <input type="text" id="empresa" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cnpj">CNPJ*</label>
+                    <input type="text" id="cnpj" placeholder="00.000.000/0000-00" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">E-MAIL*</label>
+                    <input type="email" id="email" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="telefone">TELEFONE*</label>
+                    <input type="tel" id="telefone" placeholder="(00) 0000-0000" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="whatsapp">WHATSAPP (OPCIONAL)</label>
+                    <input type="tel" id="whatsapp" placeholder="(00) 00000-0000">
+                </div>
+                
+                <div class="form-group">
+                    <label for="estado">ESTADO*</label>
+                    <select id="estado" required>
+                        <option value="">Selecione seu estado</option>
+                        <option>AC</option>
+                        <option>AL</option>
+                        <option>AP</option>
+                        <option>AM</option>
+                        <option>BA</option>
+                        <option>CE</option>
+                        <option>DF</option>
+                        <option>ES</option>
+                        <option>GO</option>
+                        <option>MA</option>
+                        <option>MT</option>
+                        <option>MS</option>
+                        <option>MG</option>
+                        <option>PA</option>
+                        <option>PB</option>
+                        <option>PR</option>
+                        <option>PE</option>
+                        <option>PI</option>
+                        <option>RJ</option>
+                        <option>RN</option>
+                        <option>RS</option>
+                        <option>RO</option>
+                        <option>RR</option>
+                        <option>SC</option>
+                        <option>SP</option>
+                        <option>SE</option>
+                        <option>TO</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cidade">CIDADE*</label>
+                    <input type="text" id="cidade" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="experiencia">POSSUI EXPERIÊNCIA COMO REVENDEDOR?*</label>
+                    <select id="experiencia" required>
+                        <option value="">Selecione uma opção</option>
+                        <option>Sim, mais de 2 anos</option>
+                        <option>Sim, menos de 2 anos</option>
+                        <option>Não, sou iniciante</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="mensagem">POR QUE QUER SER UM REVENDEDOR SUDU?*</label>
+                    <textarea id="mensagem" placeholder="Descreva seus objetivos e expectativas" required></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-paper-plane"></i> ENVIAR CADASTRO
+                </button>
+            </form>
+            
+            <!-- Link de volta para a página principal -->
+            <a href="index.html" class="back-link">
+                <i class="fas fa-arrow-left"></i> VOLTAR PARA O SITE PRINCIPAL
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <p><i class="fas fa-map-marker-alt"></i> Rua das Motos Elétricas, 123 - São Paulo/SP</p>
+            <p><i class="fas fa-phone"></i> (11) 1234-5678 | <i class="fas fa-whatsapp"></i> (11) 98765-4321</p>
+            <p><i class="fas fa-envelope"></i> contato@sudu.com.br</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <p style="margin-top: 20px;">SUDU &copy; 2023 - Todos os direitos reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        // Máscaras para formulário
+        function aplicarMascara(input, pattern) {
+            input.addEventListener('input', function(e) {
+                let value = e.target.value.replace(/\D/g, '');
+                let formatted = '';
+                
+                for (let i = 0, j = 0; i < pattern.length && j < value.length; i++) {
+                    if (pattern[i] === '9') {
+                        formatted += value[j++] || '';
+                    } else {
+                        formatted += pattern[i];
+                    }
+                }
+                
+                e.target.value = formatted;
+            });
+        }
+
+        // Aplicar máscaras
+        aplicarMascara(document.getElementById('cnpj'), '99.999.999/9999-99');
+        aplicarMascara(document.getElementById('telefone'), '(99) 9999-9999');
+        aplicarMascara(document.getElementById('whatsapp'), '(99) 99999-9999');
+
+        // Validação do formulário
+        document.getElementById('revendedorForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validação simples
+            let isValid = true;
+            const requiredFields = this.querySelectorAll('[required]');
+            
+            requiredFields.forEach(field => {
+                if (!field.value.trim()) {
+                    field.style.borderColor = 'red';
+                    isValid = false;
+                } else {
+                    field.style.borderColor = '#ddd';
+                }
+            });
+            
+            if (isValid) {
+                // Simular envio (substitua por AJAX/API real)
+                alert('Cadastro enviado com sucesso!\nNossa equipe entrará em contato em até 48h.');
+                this.reset();
+                
+                // Rolar para o topo após envio
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            } else {
+                alert('Por favor, preencha todos os campos obrigatórios!');
+            }
+        });
+
+        // Auto-foco no primeiro campo quando a página carrega
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('nome').focus();
+        });
+    </script>
+</body>
+</html>
