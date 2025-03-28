@@ -48,36 +48,25 @@
         /* Menu */
         .nav-menu {
             display: flex;
-            gap: 30px;
+            justify-content: center; /* Centraliza os botões */
+            gap: 20px; /* Espaçamento entre os botões */
+            margin-top: 20px;
         }
 
         .nav-menu a {
-            color: white;
+            color: white; /* Cor branca */
             text-decoration: none;
             font-size: 16px;
             font-weight: bold;
-            transition: 0.3s;
-            padding: 5px 0;
-            position: relative;
+            padding: 10px 20px;
+            border: 2px solid white; /* Borda branca */
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .nav-menu a:hover {
-            color: #FFD700;
-        }
-
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            background: #FFD700;
-            bottom: 0;
-            left: 0;
-            transition: width 0.3s;
-        }
-
-        .nav-menu a:hover::after {
-            width: 100%;
+            background-color: white; /* Fundo branco ao passar o mouse */
+            color: black; /* Texto preto ao passar o mouse */
         }
 
         /* Carrossel */
@@ -1109,7 +1098,7 @@
             <p>
                 Junte-se à nossa rede de revendedores e aproveite oportunidades exclusivas no mercado de mobilidade elétrica, que cresce mais de 30% ao ano no Brasil.
             </p>
-            <a href="formulario.html" class="cta-button">Quero Ser Revendedor</a>
+            <a href="formulario-revendedor.html" class="cta-button">Quero Ser Revendedor</a>
         </div>
     </section>
 
