@@ -1,883 +1,1093 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUDU HOME</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>SUDUTECH - Mobilidade Elétrica Futurista</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #000000; /* Preto */
+            --secondary: #FFD700; /* Amarelo (tom principal) */
+            --accent: #FFEA70; /* Amarelo claro para contraste */
+            --dark: #0A0A0A; /* Fundo escuro */
+            --light: #FFFFFF; /* Branco */
+            --gray: #1E1E1E; /* Cinza escuro */
+            --gradient: linear-gradient(135deg, var(--secondary), var(--accent)); /* Gradiente amarelo */
+        }
+
+        /* Reset e Estilos Globais */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: Arial, sans-serif;
-            color: #333;
+            background-color: var(--dark);
+            color: var(--light);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
         }
 
-        /* Faixa preta com logo e menu */
-        .logo-container {
-            background-color: black;
-            display: flex;
-            align-items: center;
-            justify-content: space-between; /* Mantém a logo e o menu separados */
-            padding: 10px 5%;
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        .container {
             width: 100%;
-            height: 80px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 1000;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 30px;
         }
 
-        .logo-container a {
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-container img {
-            width: 60px;
-            height: auto;
-            cursor: pointer;
-            margin-right: 20px;
-        }
-
-        /* Menu */
-        .nav-menu {
-            display: flex;
-            justify-content: center; /* Centraliza os botões horizontalmente */
-            align-items: center; /* Centraliza os botões verticalmente */
-            gap: 20px; /* Espaçamento entre os botões */
-            flex: 1; /* Faz o menu ocupar o espaço restante */
-            margin: 0; /* Remove margens extras */
-        }
-
-        .nav-menu a {
-            color: white; /* Cor branca */
-            text-decoration: none;
-            font-size: 15px;
-            font-weight: bold;
-            padding: 10px 20px;
-            background-color: transparent; /* Sem fundo */
-            border: none; /* Remove o contorno */
-            border-radius: 5px;
-            transition: color 0.3s;
-        }
-
-        .nav-menu a:hover {
-            color: #FFD700; /* Cor dourada ao passar o mouse */
-        }
-
-        /* Carrossel */
-        .carousel-container {
-            width: 100%;
-            height: 60vh; /* Define a altura como 60% da altura da janela */
-            position: relative;
-            background-color: #f1f1f1;
-            margin-top: 80px;
-            overflow: hidden; /* Garante que nada ultrapasse os limites */
-        }
-
-        .carousel-slide {
-            display: flex;
-            width: 400%;
-            height: 100%;
-            transition: transform 1s ease-in-out;
-        }
-
-        .carousel-item {
-            width: 25%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
+        section {
+            padding: 100px 0;
             position: relative;
         }
 
-        .carousel-item img, .carousel-item video {
-            width: 100%;
-            height: 100%; /* Faz o vídeo ou imagem preencher toda a altura */
-            object-fit: cover; /* Garante que o conteúdo preencha o espaço sem distorção */
-        }
-
-        .carousel-caption {
-            position: absolute;
-            bottom: 20%;
-            left: 10%;
-            text-align: left;
-            max-width: 500px;
-            background: rgba(0,0,0,0.6);
-            padding: 30px;
-            border-radius: 10px;
-        }
-
-        .carousel-caption h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #FFD700;
-        }
-
-        .carousel-caption p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-        }
-
-        /* Botões do carrossel */
-        .prev, .next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 24px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.5);
-            border: none;
-            padding: 15px;
-            cursor: pointer;
-            transition: 0.3s;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .prev:hover, .next:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-
-        .prev {
-            left: 30px;
-        }
-
-        .next {
-            right: 30px;
-        }
-
-        /* Seções gerais */
-        .section {
-            padding: 80px 5%;
-            text-align: center;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 60px;
-            color: #2a5a8a;
-            position: relative;
+        .btn {
             display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 50%;
-            height: 3px;
-            background: #FFD700;
-            bottom: -10px;
-            left: 25%;
-        }
-
-        /* Seção de Benefícios */
-        .beneficios-section {
-            background-image: url('https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            color: white;
+            background: var(--gradient);
+            color: var(--primary);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            cursor: pointer;
             position: relative;
-        }
-
-        .beneficios-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
+            overflow: hidden;
             z-index: 1;
         }
 
-        .beneficios-section .container {
-            position: relative;
-            z-index: 2;
-        }
-
-        .beneficios-section h2 {
-            color: #FFD700;
-        }
-
-        .beneficios-grid {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-        }
-
-        .beneficio-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 10px;
-            padding: 30px;
-            width: 300px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s;
-        }
-
-        .beneficio-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .beneficio-card i {
-            font-size: 2.5rem;
-            color: #FFD700;
-            margin-bottom: 15px;
-        }
-
-        .beneficio-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        /* Seção de Garantia */
-        .garantia-section {
-            background-image: url('https://images.unsplash.com/photo-1597852074816-d933c7d2b988?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-            color: white;
-            position: relative;
-        }
-
-        .garantia-section::before {
+        .btn:before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(42, 90, 138, 0.8);
-            z-index: 1;
+            background: linear-gradient(135deg, var(--accent), var(--secondary));
+            z-index: -1;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0;
         }
 
-        .garantia-section .container {
-            position: relative;
-            z-index: 2;
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
         }
 
-        .garantia-content ul {
-            list-style: none;
-            max-width: 600px;
-            margin: 0 auto 30px;
-            text-align: left;
-        }
-
-        .garantia-content li {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-        }
-
-        .garantia-content i {
-            color: #FFD700;
-            margin-right: 10px;
-            font-size: 1.5rem;
-        }
-
-        /* Seção de Contato */
-        .contact-section {
-            background-color: #f9f9f9;
-        }
-
-        .contact-container {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            max-width: 1200px;
-            margin: 0 auto;
-            flex-wrap: wrap;
-        }
-
-        .contact-info, .contact-form {
-            flex: 1;
-            min-width: 300px;
-            text-align: left;
-        }
-
-        .contact-info h3, .contact-form h3 {
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            color: #2a5a8a;
-        }
-
-        .contact-info p {
-            margin-bottom: 15px;
-            font-size: 1.1rem;
-        }
-
-        .contact-info i {
-            color: #FFD700;
-            margin-right: 10px;
-            width: 20px;
-            text-align: center;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        .form-group input,
-        .form-group textarea,
-        .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-
-        .form-group textarea {
-            height: 120px;
-            resize: vertical;
-        }
-
-        .submit-btn {
-            background: #2a5a8a;
-            color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: background 0.3s;
-        }
-
-        .submit-btn:hover {
-            background: #1a3a5a;
-        }
-
-        /* Seção de Produtos */
-        .products-section {
-            background-color: white;
-        }
-
-        .products-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 30px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .product-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-
-        .product-image {
-            height: 200px;
-            overflow: hidden;
-        }
-
-        .product-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-
-        .product-card:hover .product-image img {
-            transform: scale(1.1);
-        }
-
-        .product-info {
-            padding: 20px;
-        }
-
-        .product-info h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-            color: #2a5a8a;
-        }
-
-        .product-info p {
-            margin-bottom: 15px;
-            color: #666;
-        }
-
-        .product-price {
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: #FFD700;
-            margin-bottom: 15px;
-        }
-
-        .product-btn {
-            display: inline-block;
-            background: #2a5a8a;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 5px;
-            text-decoration: none;
-            transition: background 0.3s;
-        }
-
-        .product-btn:hover {
-            background: #1a3a5a;
-        }
-
-        /* Seção de Depoimentos */
-        .testimonials-section {
-            background-color: #f1f1f1;
-        }
-
-        .testimonials-container {
-            display: flex;
-            overflow-x: auto;
-            gap: 30px;
-            padding: 20px 0;
-            scroll-snap-type: x mandatory;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .testimonial-card {
-            min-width: 300px;
-            background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            scroll-snap-align: start;
-        }
-
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .testimonial-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-right: 15px;
-        }
-
-        .testimonial-avatar img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .testimonial-author h4 {
-            margin-bottom: 5px;
-            color: #2a5a8a;
-        }
-
-        .testimonial-rating {
-            color: #FFD700;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            color: #555;
-        }
-
-        /* Seção de Revendedores */
-        .partners-section {
-            background-color: white;
-        }
-
-        .partners-grid {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .partner-logo {
-            width: 150px;
-            height: 80px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            filter: grayscale(100%);
-            opacity: 0.7;
-            transition: all 0.3s;
-        }
-
-        .partner-logo:hover {
-            filter: grayscale(0%);
+        .btn:hover:before {
             opacity: 1;
         }
 
-        .partner-logo img {
-            max-width: 100%;
-            max-height: 100%;
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--secondary);
+            color: var(--secondary);
+            margin-left: 15px;
         }
 
-        /* Seção Seja Revendedor */
-        .become-partner {
-            background-color: #2a5a8a;
-            color: white;
+        .btn-outline:hover {
+            color: var(--primary);
+        }
+
+        .section-title {
             text-align: center;
-            padding: 60px 5%;
+            margin-bottom: 80px;
+            position: relative;
         }
 
-        .become-partner h2 {
-            color: white;
+        .section-title h2 {
+            font-size: 3.5rem;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            display: inline-block;
             margin-bottom: 20px;
         }
 
-        .become-partner p {
-            max-width: 800px;
-            margin: 0 auto 30px;
+        .section-title p {
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 700px;
+            margin: 0 auto;
             font-size: 1.1rem;
+            line-height: 1.6;
         }
 
-        /* Botões */
-        .cta-button {
-            display: inline-block;
-            background: #2a5a8a; /* Fundo azul */
-            color: white;
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: background-color 0.3s;
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            transition: all 0.4s ease;
         }
 
-        .cta-button:hover {
-            background: #1a3a5a; /* Fundo azul mais escuro ao passar o mouse */
+        header.scrolled {
+            background-color: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            padding: 15px 0;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .secondary-button {
-            display: inline-block;
-            background: transparent;
-            color: #2a5a8a;
-            padding: 12px 30px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s;
-            border: 2px solid #2a5a8a;
-        }
-
-        .secondary-button:hover {
-            background: #2a5a8a;
-            color: white;
-        }
-
-        /* Rodapé */
-        footer {
-            background-color: #222;
-            color: white;
-            padding: 50px 5% 20px;
-            text-align: center;
-        }
-
-        .footer-container {
+        .header-container {
             display: flex;
             justify-content: space-between;
-            flex-wrap: wrap;
-            max-width: 1200px;
-            margin: 0 auto;
-            gap: 40px;
+            align-items: center;
         }
 
-        .footer-column {
-            flex: 1;
-            min-width: 250px;
-            text-align: left;
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
         }
 
-        .footer-column h3 {
-            color: #FFD700;
-            margin-bottom: 20px;
-            font-size: 1.3rem;
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+            position: relative;
         }
 
-        .footer-column ul {
+        .logo-icon:before, .logo-icon:after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--secondary);
+            border-radius: 50%;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            animation: rotate 6s linear infinite;
+        }
+
+        .logo-icon:before {
+            top: 0;
+            left: 0;
+            animation-delay: 0s;
+        }
+
+        .logo-icon:after {
+            bottom: 0;
+            right: 0;
+            animation-delay: -1.5s;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        nav ul {
+            display: flex;
             list-style: none;
         }
 
-        .footer-column ul li {
-            margin-bottom: 10px;
+        nav ul li {
+            margin-left: 40px;
+            position: relative;
         }
 
-        .footer-column ul li a {
-            color: #ddd;
+        nav ul li a {
             text-decoration: none;
-            transition: color 0.3s;
+            color: var(--light);
+            font-weight: 500;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .footer-column ul li a:hover {
-            color: #FFD700;
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--secondary);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--light);
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 800px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            padding-top: 0;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.1), transparent 50%);
+            z-index: -1;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, var(--light), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        .hero-btns {
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-image {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 60%;
+            max-width: 900px;
+            z-index: -1;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-30px); }
+        }
+
+        /* Destaques */
+        .features {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .features:before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 255, 209, 0.1), transparent 70%);
+            z-index: -1;
+        }
+
+        .features:after {
+            content: '';
+            position: absolute;
+            bottom: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent 70%);
+            z-index: -1;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 colunas */
+            gap: 20px; /* Espaçamento entre os cards */
+            justify-items: center; /* Centraliza os cards horizontalmente */
+        }
+
+        .feature-card {
+            background: rgba(30, 30, 30, 0.6);
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 255, 209, 0.1));
+            z-index: -1;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 215, 0, 0.3);
+        }
+
+        .feature-card:hover:before {
+            opacity: 1;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+
+        .feature-card p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1rem;
+        }
+
+        /* Modelos */
+        .models {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .models:before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            height: 80%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.05), transparent 70%);
+            z-index: -1;
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .model-card {
+            background: rgba(30, 30, 30, 0.6);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .model-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(0, 255, 209, 0.3);
+        }
+
+        .model-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .model-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+
+        .model-card:hover .model-img img {
+            transform: scale(1.1);
+        }
+
+        .model-info {
+            padding: 30px;
+        }
+
+        .model-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--light);
+        }
+
+        .model-specs {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .model-specs span {
+            display: flex;
+            align-items: center;
+        }
+
+        .model-specs i {
+            margin-right: 8px;
+            color: var(--secondary);
+        }
+
+        .model-price {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Sobre */
+        .about {
+            position: relative;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-img {
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .about-img:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 255, 209, 0.1));
+            z-index: 1;
+        }
+
+        .about-text h2 {
+            font-size: 3rem;
+            margin-bottom: 25px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .stat-label {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Contato */
+        .contact {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact:before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            left: -100px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(0, 255, 209, 0.1), transparent 70%);
+            z-index: -1;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info h3 {
+            font-size: 2rem;
+            margin-bottom: 25px;
+            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .contact-info p {
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+        }
+
+        .contact-details {
+            margin-bottom: 40px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .contact-text {
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .social-links {
             display: flex;
             gap: 15px;
-            margin-top: 20px;
         }
 
         .social-links a {
-            color: white;
-            background: #444;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--light);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
         }
 
         .social-links a:hover {
-            background: #FFD700;
-            color: #222;
+            background: var(--gradient);
+            color: var(--primary);
             transform: translateY(-5px);
         }
 
-        .copyright {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #444;
-            font-size: 0.9rem;
-            color: #aaa;
+        .contact-form input,
+        .contact-form textarea,
+        .contact-form select {
+            width: 100%;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            background: rgba(30, 30, 30, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
         }
 
-        /* Responsividade */
+        .contact-form input:focus,
+        .contact-form textarea:focus,
+        .contact-form select:focus {
+            outline: none;
+            border-color: var(--secondary);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .contact-form textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0), var(--dark));
+            padding: 100px 0 30px;
+            position: relative;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: var(--light);
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-col h3:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--gradient);
+        }
+
+        .footer-col p {
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--secondary);
+            transform: translateX(5px);
+        }
+
+        .newsletter-form {
+            display: flex;
+            margin-top: 20px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            background: rgba(30, 30, 30, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px 0 0 10px;
+            color: var(--light);
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .newsletter-form button {
+            background: var(--gradient);
+            color: var(--primary);
+            border: none;
+            padding: 0 25px;
+            border-radius: 0 10px 10px 0;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .newsletter-form button:hover {
+            opacity: 0.9;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsivo */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+            
+            .hero-image {
+                width: 50%;
+                opacity: 0.5;
+            }
+        }
+
         @media (max-width: 992px) {
-            .carousel-container {
-                height: 60vh;
+            .hero {
+                min-height: 700px;
             }
             
-            .carousel-caption {
-                bottom: 15%;
-                left: 5%;
-                right: 5%;
-                max-width: 90%;
+            .hero h1 {
+                font-size: 3.5rem;
             }
             
+            .hero-content {
+                max-width: 600px;
+            }
+            
+            .about-content,
             .contact-container {
-                flex-direction: column;
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                order: -1;
+            }
+            
+            .section-title h2 {
+                font-size: 3rem;
             }
         }
 
         @media (max-width: 768px) {
-            .logo-container {
-                height: 70px;
-                padding: 10px 3%;
+            .mobile-menu {
+                display: block;
             }
             
-            .nav-menu {
-                gap: 15px;
-            }
-
-            .nav-menu a {
-                font-size: 14px;
-            }
-
-            .carousel-container {
-                height: 50vh;
-                margin-top: 70px;
-            }
-            
-            .carousel-caption {
-                padding: 20px;
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                max-width: 300px;
+                height: 100vh;
+                background: var(--dark);
+                flex-direction: column;
+                padding: 100px 30px;
+                transition: right 0.4s ease;
+                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
             }
             
-            .carousel-caption h2 {
-                font-size: 1.8rem;
+            nav ul.show {
+                right: 0;
             }
             
-            .carousel-caption p {
+            nav ul li {
+                margin: 0 0 20px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
                 font-size: 1rem;
             }
-
-            .beneficio-card {
-                width: 100%;
+            
+            .hero-btns {
+                flex-direction: column;
             }
             
-            .section {
-                padding: 60px 3%;
+            .btn-outline {
+                margin-left: 0;
+                margin-top: 15px;
             }
             
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 40px;
+            .hero-image {
+                display: none;
+            }
+            
+            .models-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .section-title h2 {
+                font-size: 2.5rem;
             }
         }
 
         @media (max-width: 576px) {
-            .logo-container {
-                flex-direction: column;
-                height: auto;
-                padding: 15px;
+            .hero h1 {
+                font-size: 2.2rem;
             }
             
-            .logo-container img {
-                margin-right: 0;
-                margin-bottom: 10px;
+            .section-title h2 {
+                font-size: 2rem;
             }
             
-            .nav-menu {
-                gap: 10px;
-                flex-wrap: wrap;
-                justify-content: center;
+            .stats {
+                grid-template-columns: 1fr;
             }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+            }
+        }
 
-            .carousel-container {
-                height: 40vh;
+        /* Efeitos de Partículas */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--secondary);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float-particle linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
             }
-            
-            .prev, .next {
-                width: 40px;
-                height: 40px;
-                font-size: 18px;
+            50% {
+                opacity: 0.5;
             }
-            
-            .beneficio-card {
-                padding: 20px;
-            }
-            
-            .footer-column {
-                text-align: center;
-            }
-            
-            .social-links {
-                justify-content: center;
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Faixa preta com logo e menu -->
-    <div class="logo-container">
-        <a href="index.html">
-            <img src="./assets/Logo SUDU transparente.png" alt="Logo da Sudu">
-        </a>
-        <nav class="nav-menu">
-            <a href="formulario-revendedor.html" >Quero Ser Revendedor</a>
-            <a href="sobre.html">Sobre nós</a>
-            <a href="catalogo.html">Catálogo</a>
-            <a href="#testimonials">Depoimentos</a>
-            <a href="#contact">Contato</a>
-            <a href="#partners">Revendedores</a>
-        </nav>
-    </div>
+    <!-- Efeito de Partículas -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon"></div>
+                <div class="logo-text">SUDU<span>TECH</span></div>
+            </a>
+            
+            <nav>
+                <div class="mobile-menu" id="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <ul id="nav-menu">
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="./catalogo.html">Modelos</a></li>
+                    <li><a href="#features">Vantagens</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="./formulario-revendedor.html">Seja</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-    <!-- Carrossel -->
-    <div class="carousel-container">
-        <div class="carousel-slide">
-            <div class="carousel-item">
-                <video autoplay muted loop>
-                    <source src="./assets/Design sem nome.mp4" type="video/mp4">
-                    Seu navegador não suporta vídeos.
-                </video>
-                <div class="carousel-caption">
-                    <h2>SUDU - Mobilidade Inteligente</h2>
-                    <p>Conheça nossa linha de motos elétricas que combinam desempenho, economia e sustentabilidade.</p>
-                    <a href="catalogo.html" class="cta-button">Ver Catálogo</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Moto Elétrica">
-                <div class="carousel-caption">
-                    <h2>Tecnologia e Inovação</h2>
-                    <p>As melhores soluções em mobilidade urbana com tecnologia de ponta.</p>
-                    <a href="sobre.html" class="cta-button">Saiba Mais</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1593764592116-bfb2a97c642a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Revendedores">
-                <div class="carousel-caption">
-                    <h2>Seja um Revendedor</h2>
-                    <p>Faça parte da nossa rede de revendedores e aproveite oportunidades exclusivas.</p>
-                    <!-- BOTÃO ALTERADO: Agora leva direto ao formulário (#contact) -->
-                    <a href="#contact" class="cta-button">Quero Ser Revendedor</a>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Garantia">
-                <div class="carousel-caption">
-                    <h2>Garantia Extendida</h2>
-                    <p>2 anos de garantia para motor e bateria em todos os nossos produtos.</p>
-                    <a href="#warranty" class="cta-button">Conheça Nossa Garantia</a>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <img src="./assets/932A9778.jpg" alt="Moto Elétrica SUDUTECH" class="hero-bg">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Revolucione sua mobilidade</h1>
+                <p>A SUDUTECH está liderando a revolução elétrica com motos de alto desempenho, tecnologia avançada e design futurista. Experimente o futuro do transporte urbano.</p>
+                <div class="hero-btns">
+                    <a href="#models" class="btn">Explorar Modelos</a>
+                    <a href="#contact" class="btn btn-outline">Seja Revendedor</a>
                 </div>
             </div>
         </div>
-        <button class="prev"><i class="fas fa-chevron-left"></i></button>
-        <button class="next"><i class="fas fa-chevron-right"></i></button>
-    </div>
+        <img src="" alt="" class="hero-image">
+    </section>
 
-    <!-- Seção Sobre -->
-    <section id="about" class="section">
+    <!-- Destaques -->
+    <section class="features" id="features">
         <div class="container">
-            <h2 class="section-title">Porque a SUDU?</h2>
-            <p style="max-width: 800px; margin: 0 auto 40px; font-size: 1.1rem; line-height: 1.6;">
-                A SUDU é líder em mobilidade elétrica no Brasil, oferecendo soluções inovadoras e sustentáveis para o transporte urbano. Nossas motos elétricas combinam design moderno, tecnologia avançada e compromisso com o meio ambiente, proporcionando uma experiência de condução única com economia e baixo impacto ambiental.
-            </p>
-            <a href="#" class="secondary-button">Nossa História</a>
+            <div class="section-title">
+                <h2>Tecnologia sem Limites</h2>
+                <p>Descubra as vantagens exclusivas das motos elétricas SUDUTECH</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Potência Instantânea</h3>
+                    <p>Aceleração imediata com torque máximo desde a partida, proporcionando uma experiência de pilotagem emocionante.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3>Eficiência Infinita</h3>
+                    <p>Tecnologia de ponta que maximiza a autonomia e reduz o consumo energético ao mínimo possível.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Inteligência Artificial</h3>
+                    <p>Sistema de aprendizado contínuo que adapta o desempenho ao seu estilo de pilotagem e condições da via.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Conectividade Total</h3>
+                    <p>Integração completa com seu smartphone via app SUDUTECH, com atualizações over-the-air e diagnóstico remoto.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Segurança Avançada</h3>
+                    <p>Sistema de estabilidade dinâmica, frenagem regenerativa e assistentes de pilotagem para máxima segurança.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-leaf"></i>
+                    </div>
+                    <h3>Sustentabilidade</h3>
+                    <p>Zero emissões e materiais recicláveis em toda a estrutura, com baterias de última geração e vida útil estendida.</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Seção de Benefícios -->
-    <section class="beneficios-section section">
+    <!-- Seção de Potência Instantânea e Outros Cards -->
+    <section class="features-section">
         <div class="container">
-            <h2 class="section-title">Por que escolher a SUDU?</h2>
-            <div class="beneficios-grid">
-                <div class="beneficio-card">
+            <h2 class="section-title">Destaques da SUDUTECH</h2>
+            <div class="features-grid">
+                <!-- Linha 1 -->
+                <div class="feature-card">
                     <i class="fas fa-bolt"></i>
-                    <h3>Econômica</h3>
-                    <p>Rode até 100 km com apenas R$ 2 de energia elétrica.</p>
+                    <h3>Potência Instantânea</h3>
+                    <p>Desempenho imediato com torque máximo desde o início.</p>
                 </div>
-                <div class="beneficio-card">
+                <div class="feature-card">
                     <i class="fas fa-leaf"></i>
-                    <h3>Sustentável</h3>
-                    <p>Zero emissões de poluentes, contribuindo para um planeta mais verde.</p>
+                    <h3>Sustentabilidade</h3>
+                    <p>Zero emissões de carbono, ajudando o meio ambiente.</p>
                 </div>
-                <div class="beneficio-card">
+                <div class="feature-card">
+                    <i class="fas fa-charging-station"></i>
+                    <h3>Recarga Rápida</h3>
+                    <p>Carregue completamente em apenas 4 horas.</p>
+                </div>
+                <!-- Linha 2 -->
+                <div class="feature-card">
                     <i class="fas fa-cogs"></i>
                     <h3>Manutenção Simples</h3>
-                    <p>Custo de manutenção 70% menor que motos tradicionais.</p>
+                    <p>Menos peças móveis, reduzindo custos de manutenção.</p>
                 </div>
-                <div class="beneficio-card">
+                <div class="feature-card">
                     <i class="fas fa-shield-alt"></i>
                     <h3>Segurança</h3>
                     <p>Sistema de frenagem regenerativa e componentes de alta qualidade.</p>
                 </div>
-                <div class="beneficio-card">
-                    <i class="fas fa-charging-station"></i>
-                    <h3>Recarga Rápida</h3>
-                    <p>Bateria carregada em apenas 4 horas em tomada comum.</p>
-                </div>
-                <div class="beneficio-card">
+                <div class="feature-card">
                     <i class="fas fa-headset"></i>
                     <h3>Suporte 24/7</h3>
                     <p>Assistência técnica disponível em todo o território nacional.</p>
@@ -886,408 +1096,223 @@
         </div>
     </section>
 
-    <!-- Seção de Garantia -->
-    <section id="warranty" class="garantia-section section">
-        <div class="container">
-            <h2 class="section-title">Garantia SUDU</h2>
-            <div class="garantia-content">
-                <ul>
-                    <li><i class="fas fa-check-circle"></i> 2 anos de garantia para o motor e bateria</li>
-                    <li><i class="fas fa-check-circle"></i> Assistência técnica em todo o Brasil</li>
-                    <li><i class="fas fa-check-circle"></i> Troca grátis de peças defeituosas em 30 dias</li>
-                    <li><i class="fas fa-check-circle"></i> Suporte prioritário para clientes SUDU</li>
-                    <li><i class="fas fa-check-circle"></i> Cobertura extensiva para todos os componentes elétricos</li>
-                </ul>
-                <a href="#contact" class="cta-button">Fale com Nossa Equipe</a>
-            </div>
-        </div>
-    </section>
+   
 
-    <!-- Seção de Produtos C
-    <section id="products" class="products-section section">
+    <!-- Sobre -->
+    <section class="about" id="about">
         <div class="container">
-            <h2 class="section-title">Nossos Produtos</h2>
-            <p style="max-width: 800px; margin: 0 auto 50px; font-size: 1.1rem;">
-                Conheça nossa linha completa de motos elétricas desenvolvidas para atender diferentes necessidades de mobilidade urbana.
-            </p>
-            
-            <div class="products-grid">
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1591637333184-19aa84b3e01f?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80" alt="SUDU Max">
-                    </div>
-                    <div class="product-info">
-                        <h3>SUDU Max</h3>
-                        <p>Moto elétrica premium com autonomia de 120km e velocidade máxima de 80km/h.</p>
-                        <div class="product-price">R$ 12.990,00</div>
-                        <a href="#" class="product-btn">Detalhes</a>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="SUDU Lite">
-                    </div>
-                    <div class="product-info">
-                        <h3>SUDU Lite</h3>
-                        <p>Modelo leve e compacto, perfeito para o dia a dia na cidade.</p>
-                        <div class="product-price">R$ 9.490,00</div>
-                        <a href="#" class="product-btn">Detalhes</a>
-                    </div>   
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="SUDU Pro">
-                    </div>
-                    <div class="product-info">
-                        <h3>SUDU Pro</h3>
-                        <p>Para entregadores e uso profissional, com baixo custo operacional.</p>
-                        <div class="product-price">R$ 10.990,00</div>
-                        <a href="#" class="product-btn">Detalhes</a>
-                    </div>
-                </div>
-                
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="https://images.unsplash.com/photo-1580310614656-6a7a13a119b9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="SUDU Family">
-                    </div>
-                    <div class="product-info">
-                        <h3>SUDU Family</h3>
-                        <p>Modelo com assento duplo e maior capacidade de carga.</p>
-                        <div class="product-price">R$ 13.990,00</div>
-                        <a href="#" class="product-btn">Detalhes</a>
-                    </div>
-                </div> 
-            </div>
-            
-            <a href=" colocar link aqui" class="cta-button" style="margin-top: 50px;">Ver Catálogo Completo</a> 
-        </div>
-    </section> -->
-
-    <!-- Seção de Depoimentos -->
-    <section id="testimonials" class="testimonials-section section">
-        <div class="container">
-            <h2 class="section-title">O que dizem nossos clientes</h2>
-            
-            <div class="testimonials-container">
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Maria Silva">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Além da Inovação</h2>
+                    <p>A SUDUTECH nasceu da paixão por tecnologia e mobilidade sustentável. Nossa missão é transformar o transporte urbano através de soluções elétricas inteligentes, combinando desempenho excepcional com responsabilidade ambiental.</p>
+                    <p>Com centros de pesquisa e desenvolvimento em três continentes, estamos constantemente avançando os limites da tecnologia de mobilidade elétrica. Cada moto SUDUTECH é o resultado de anos de pesquisa e inovação.</p>
+                    <p>Nossa visão é criar um futuro onde o transporte seja limpo, silencioso e emocionante - sem comprometer o planeta para as próximas gerações.</p>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">5+</div>
+                            <div class="stat-label">Anos no Mercado</div>
                         </div>
-                        <div class="testimonial-author">
-                            <h4>Maria Silva</h4>
-                            <div class="testimonial-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
+                        <div class="stat-item">
+                            <div class="stat-number">10K</div>
+                            <div class="stat-label">Clientes Satisfeitos</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Prêmios Globais</div>
                         </div>
                     </div>
-                    <div class="testimonial-text">
-                        <p>"Comprei minha SUDU Lite há 6 meses e estou extremamente satisfeita. A economia com combustível é incrível e a moto é muito ágil no trânsito da cidade. Recomendo a todos!"</p>
-                    </div>
                 </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Oliveira">
-                        </div>
-                        <div class="testimonial-author">
-                            <h4>Carlos Oliveira</h4>
-                            <div class="testimonial-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-text">
-                        <p>"Como entregador, a SUDU Pro mudou meu negócio. O custo por km é insignificante comparado à minha moto antiga. Em 3 meses já recuperei o investimento com a economia de combustível."</p>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ana Santos">
-                        </div>
-                        <div class="testimonial-author">
-                            <h4>Ana Santos</h4>
-                            <div class="testimonial-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-text">
-                        <p>"Adoro minha SUDU Max! Além de linda, é superconfortável e potente. Fiz um teste de autonomia e consegui rodar 110km com uma carga completa. O atendimento da SUDU também é excelente."</p>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">
-                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Roberto Ferreira">
-                        </div>
-                        <div class="testimonial-author">
-                            <h4>Roberto Ferreira</h4>
-                            <div class="testimonial-rating">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="testimonial-text">
-                        <p>"Comprei duas SUDU Family para minha pequena empresa de entregas. Além da economia, meus funcionários adoram pilotar. O único ponto negativo é que às vezes falta peça na assistência técnica."</p>
-                    </div>
-                </div>
-            </div>
-            
-            <a href="#contact" class="secondary-button" style="margin-top: 40px;">Deixe seu Depoimento</a>
-        </div>
-    </section>
-
-    <!-- Seção de Revendedores -->
-    <section id="partners" class="partners-section section">
-        <div class="container">
-            <h2 class="section-title">Nossos Parceiros</h2>
-            <p style="max-width: 800px; margin: 0 auto 50px; font-size: 1.1rem;">
-                Trabalhamos com as melhores marcas do mercado para oferecer produtos de qualidade e tecnologia avançada.
-            </p>
-            
-            <div class="partners-grid">
-                <div class="partner-logo">
-                    <img src="https://via.placeholder.com/150x80?text=Logo+Marca+1" alt="Marca 1">
-                </div>
-                <div class="partner-logo">
-                    <img src="https://via.placeholder.com/150x80?text=Logo+Marca+2" alt="Marca 2">
-                </div>
-                <div class="partner-logo">
-                    <img src="https://via.placeholder.com/150x80?text=Logo+Marca+3" alt="Marca 3">
-                </div>
-                <div class="partner-logo">
-                    <img src="https://via.placeholder.com/150x80?text=Logo+Marca+4" alt="Marca 4">
-                </div>
-                <div class="partner-logo">
-                    <img src="https://via.placeholder.com/150x80?text=Logo+Marca+5" alt="Marca 5">
-                </div>
-                <div class="partner-logo">
-                    <img src="https://via.placeholder.com/150x80?text=Logo+Marca+6" alt="Marca 6">
+                <div class="about-img">
+                    <img src="./assets/Design sem nome (4).png" alt="Sobre a SUDUTECH">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Seção Seja Revendedor -->
-    <section class="become-partner section">
+    <!-- Contato -->
+    <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title">Seja um Revendedor SUDU</h2>
-            <p>
-                Junte-se à nossa rede de revendedores e aproveite oportunidades exclusivas no mercado de mobilidade elétrica, que cresce mais de 30% ao ano no Brasil.
-            </p>
-            <a href="formulario-revendedor.html" class="cta-button">Quero Ser Revendedor</a>
-        </div>
-    </section>
-
-    <!-- Seção de Contato (FORMULÁRIO PRINCIPAL) -->
-    <section id="contact" class="contact-section section">
-        <div class="container">
-            <h2 class="section-title">Fale Conosco</h2>
+            <div class="section-title">
+                <h2>Conecte-se</h2>
+                <p>Entre em contato com nossa equipe para mais informações</p>
+            </div>
             
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Informações de Contato</h3>
-                    <p><i class="fas fa-map-marker-alt"></i> Rua das Motos Elétricas, 123 - São Paulo/SP</p>
-                    <p><i class="fas fa-phone"></i> (11) 1234-5678</p>
-                    <p><i class="fas fa-whatsapp"></i> (11) 98765-4321</p>
-                    <p><i class="fas fa-envelope"></i> contato@sudu.com.br</p>
-                    <p><i class="fas fa-clock"></i> Segunda a Sexta: 9h às 18h</p>
+                    <h3>Vamos conversar</h3>
+                    <p>Estamos aqui para responder todas suas perguntas sobre a SUDUTECH, agendar test rides ou ajudar no processo de compra da sua nova moto elétrica.</p>
                     
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <span class="contact-text">Av. da Inovação, 1500 - São Paulo, SP</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <span class="contact-text">(11) 4002-8922</span>
+                        </div>
+                        
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <span class="contact-text">contato@sudutech.com.br</span>
+                        </div>
+                    </div>
+                    
+                    <h3>Siga a SUDUTECH</h3>
                     <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
                     </div>
                 </div>
                 
                 <div class="contact-form">
-                    <h3>Envie sua Mensagem</h3>
-                    <form id="contactForm" action="enviar_email.php" method="POST">
-                        <div class="form-group">
-                            <label for="name">Nome Completo*</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="company">Nome da Empresa</label>
-                            <input type="text" id="company" name="company">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">E-mail*</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Telefone*</label>
-                            <input type="tel" id="phone" name="phone" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="whatsapp">WhatsApp</label>
-                            <input type="tel" id="whatsapp" name="whatsapp">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="cnpj">CNPJ (se aplicável)</label>
-                            <input type="text" id="cnpj" name="cnpj">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="subject">Assunto</label>
-                            <select id="subject" name="subject">
-                                <option value="duvida">Dúvida</option>
-                                <option value="orcamento">Orçamento</option>
-                                <option value="reclamacao">Reclamação</option>
-                                <option value="elogio">Elogio</option>
-                                <!-- OPÇÃO ADICIONADA: "Seja um Revendedor" já selecionada -->
-                                <option value="revendedor" selected>Seja um Revendedor</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Mensagem*</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Enviar Mensagem</button>
+                    <form id="contactForm">
+                        <input type="text" placeholder="Seu Nome" required>
+                        <input type="email" placeholder="Seu E-mail" required>
+                        <input type="tel" placeholder="Seu Telefone">
+                        <select required>
+                            <option value="">Assunto</option>
+                            <option>Agendar Test Ride</option>
+                            <option>Informações sobre modelos</option>
+                            <option>Financiamento</option>
+                            <option>Manutenção</option>
+                            <option>Outro</option>
+                        </select>
+                        <textarea placeholder="Sua Mensagem" required></textarea>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
                     </form>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Rodapé -->
+    <!-- Footer -->
     <footer>
-        <div class="footer-container">
-            <div class="footer-column">
-                <h3>SUDU</h3>
-                <p>Líder em mobilidade elétrica no Brasil, oferecendo soluções inovadoras e sustentáveis para o transporte urbano.</p>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>SUDUTECH</h3>
+                    <p>Liderando a revolução da mobilidade elétrica com tecnologia de ponta, design inovador e compromisso com a sustentabilidade.</p>
+                    <div class="logo" style="margin-top: 20px;">
+                        <div class="logo-icon" style="width: 30px; height: 30px;"></div>
+                        <div class="logo-text" style="font-size: 1.5rem;">SUDU<span>TECH</span></div>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Modelos</h3>
+                    <ul>
+                        <li><a href="#">SUDUTECH NEO</a></li>
+                        <li><a href="#">SUDUTECH QUANTUM</a></li>
+                        <li><a href="#">SUDUTECH INFINITY</a></li>
+                        <li><a href="#">Próximos Lançamentos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Links Úteis</h3>
+                    <ul>
+                        <li><a href="#">Concessionárias</a></li>
+                        <li><a href="#">Financiamento</a></li>
+                        <li><a href="#">Garantia</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Trabalhe Conosco</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Newsletter</h3>
+                    <p>Assine para receber as últimas novidades, lançamentos e ofertas exclusivas da SUDUTECH.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Seu e-mail" required>
+                        <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                    </form>
+                </div>
             </div>
             
-            <div class="footer-column">
-                <h3>Links Rápidos</h3>
-                <ul>
-                    <li><a href="#about">Sobre Nós</a></li>
-                    <li><a href="#products">Nossos Produtos</a></li>
-                    <li><a href="#warranty">Garantia</a></li>
-                    <li><a href="#testimonials">Depoimentos</a></li>
-                    <li><a href="#partners">Revendedores</a></li>
-                </ul>
+            <div class="copyright">
+                <p>&copy; 2023 SUDUTECH. Todos os direitos reservados. | Desenvolvido com <i class="fas fa-heart" style="color: var(--accent);"></i> pela equipe SUDUTECH</p>
             </div>
-            
-            <div class="footer-column">
-                <h3>Suporte</h3>
-                <ul>
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="#">Manual do Proprietário</a></li>
-                    <li><a href="#">Assistência Técnica</a></li>
-                    <li><a href="#">Política de Privacidade</a></li>
-                    <li><a href="#">Termos de Serviço</a></li>
-                </ul>
-            </div>
-            
-            <div class="footer-column">
-                <h3>Newsletter</h3>
-                <p>Assine nossa newsletter para receber novidades e promoções.</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Seu e-mail" required>
-                    <button type="submit" class="submit-btn" style="width: 100%; margin-top: 10px;">Assinar</button>
-                </form>
-            </div>
-        </div>
-        
-        <div class="copyright">
-            <p>&copy; 2023 SUDU - Todos os direitos reservados. CNPJ: 12.345.678/0001-99</p>
         </div>
     </footer>
 
     <script>
-        // Carrossel
-        let index = 0;
-        const slides = document.querySelector('.carousel-slide');
-        const items = document.querySelectorAll('.carousel-item');
-        const totalItems = items.length;
+        // Menu Mobile
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
 
-        function updateCarousel() {
-            const offset = -index * 25;
-            slides.style.transform = `translateX(${offset}%)`;
-        }
-
-        function nextSlide() {
-            index = (index + 1) % totalItems;
-            updateCarousel();
-        }
-
-        function prevSlide() {
-            index = (index - 1 + totalItems) % totalItems;
-            updateCarousel();
-        }
-
-        setInterval(nextSlide, 8000);
-        document.querySelector('.next').addEventListener('click', nextSlide);
-        document.querySelector('.prev').addEventListener('click', prevSlide);
-
-        // Formulário de contato
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            // Aqui você pode adicionar o código para enviar o formulário
-            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-            this.reset();
+        mobileMenu.addEventListener('click', function() {
+            navMenu.classList.toggle('show');
+            mobileMenu.innerHTML = navMenu.classList.contains('show') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
         });
 
-        // Suavizar rolagem para âncoras
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+                mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
 
-        // ROLAGEM AUTOMÁTICA PARA O FORMULÁRIO SE HOUVER "#contact" NA URL
-        if(window.location.hash === '#contact') {
-            const contactSection = document.getElementById('contact');
-            if(contactSection) {
-                window.scrollTo({
-                    top: contactSection.offsetTop - 80,
-                    behavior: 'smooth'
-                });
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Efeito de partículas
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Tamanho aleatório entre 2px e 5px
+                const size = Math.random() * 3 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Posição inicial aleatória
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.bottom = `-${size}px`;
+                
+                // Duração da animação aleatória entre 10s e 20s
+                const duration = Math.random() * 10 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Atraso aleatório para começar a animação
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                
+                particlesContainer.appendChild(particle);
             }
         }
+
+        // Iniciar partículas quando a página carregar
+        window.addEventListener('load', createParticles);
+
+        // Formulário de contato
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.');
+            this.reset();
+        });
     </script>
 </body>
 </html>

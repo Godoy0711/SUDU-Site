@@ -1,489 +1,588 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seja um Revendedor - SUDU</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Seja Revendedor SUDUTECH - Mobilidade Elétrica Futurista</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary: #000000;
+            --secondary: #FFD700;
+            --accent: #FFEA70;
+            --dark: #0A0A0A;
+            --light: #FFFFFF;
+            --gray: #1E1E1E;
+            --gradient: linear-gradient(135deg, var(--secondary), var(--accent));
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
+            scroll-behavior: smooth;
         }
-        
+
         body {
-            background-color: #f9f9f9;
-            color: #333;
+            background-color: var(--dark);
+            color: var(--light);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
         }
-        
-        .logo-container {
-            background-color: #000;
+
+        h1, h2, h3, h4 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 30px;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 25px 0;
+            transition: all 0.4s ease;
+            background-color: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 10px 5%;
-            position: fixed;
-            width: 100%;
-            height: 80px;
-            top: 0;
-            z-index: 1000;
-        }
-        
-        .logo-container img {
-            width: 60px;
-            height: auto;
-            cursor: pointer;
-            margin-right: 20px;
-        }
-        
-        .nav-menu a {
-            color: white;
             text-decoration: none;
-            margin-left: 25px;
-            font-weight: 600;
-            transition: color 0.3s;
         }
-        
-        .nav-menu a:hover {
-            color: #FFD700;
-        }
-        
-        .revendedor-header {
-            background-color: #2a5a8a;
-            color: white;
-            text-align: center;
-            padding: 120px 5% 60px;
-            margin-top: 60px;
-            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1593764592116-bfb2a97c642a?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-        
-        .revendedor-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: #FFD700;
-        }
-        
-        .revendedor-header p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-        
-        .form-container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 0 5%;
-        }
-        
-        .revendedor-form {
-            background: white;
-            border-radius: 8px;
-            padding: 40px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            border-top: 5px solid #FFD700;
-        }
-        
-        .form-title {
-            color: #2a5a8a;
-            text-align: center;
-            margin-bottom: 30px;
-            font-size: 1.8rem;
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
             position: relative;
         }
-        
-        .form-title:after {
+
+        .logo-icon:before, .logo-icon:after {
             content: '';
-            display: block;
-            width: 60px;
-            height: 3px;
-            background: #FFD700;
-            margin: 15px auto 0;
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--secondary);
+            border-radius: 50%;
+            border-top-color: transparent;
+            border-right-color: transparent;
+            animation: rotate 6s linear infinite;
         }
-        
+
+        .logo-icon:before {
+            top: 0;
+            left: 0;
+            animation-delay: 0s;
+        }
+
+        .logo-icon:after {
+            bottom: 0;
+            right: 0;
+            animation-delay: -1.5s;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .logo-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--light);
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero-form {
+            height: auto;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 150px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-form:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.1), transparent 50%);
+            z-index: -1;
+        }
+
+        .hero-form-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            opacity: 0.2;
+        }
+
+        .form-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .form-content {
+            max-width: 500px;
+        }
+
+        .form-content h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, var(--light), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .form-content p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .benefits-list {
+            margin-bottom: 40px;
+        }
+
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .benefit-icon {
+            color: var(--secondary);
+            font-size: 1.2rem;
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+
+        .benefit-text {
+            flex: 1;
+        }
+
+        .benefit-text h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--light);
+        }
+
+        .benefit-text p {
+            font-size: 0.95rem;
+            margin-bottom: 0;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Formulário */
+        .revendedor-form {
+            background: rgba(30, 30, 30, 0.6);
+            border-radius: 20px;
+            padding: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-title h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .form-title p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+        }
+
         .form-group {
             margin-bottom: 25px;
         }
-        
+
         .form-group label {
             display: block;
             margin-bottom: 8px;
-            color: #2a5a8a;
-            font-weight: 600;
+            font-weight: 500;
+            color: var(--light);
+            font-size: 0.95rem;
         }
-        
+
         .form-group input,
         .form-group select,
         .form-group textarea {
             width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background: #f9f9f9;
-            transition: all 0.3s;
+            padding: 15px 20px;
+            background: rgba(20, 20, 20, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: var(--light);
             font-size: 1rem;
+            transition: all 0.3s ease;
         }
-        
+
         .form-group input:focus,
         .form-group select:focus,
         .form-group textarea:focus {
-            border-color: #FFD700;
-            background: white;
             outline: none;
-            box-shadow: 0 0 0 2px rgba(255, 215, 0, 0.2);
+            border-color: var(--secondary);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
         }
-        
+
         .form-group textarea {
             height: 120px;
             resize: vertical;
         }
-        
-        .submit-btn {
-            background: #2a5a8a; /* Cor padrão */
-            color: white;
-            border: none;
-            padding: 15px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 4px;
-            cursor: pointer;
+
+        .btn-submit {
+            display: inline-block;
             width: 100%;
-            transition: all 0.3s;
+            background: var(--gradient);
+            color: var(--primary);
+            padding: 17px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
+            font-size: 14px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
             margin-top: 10px;
-            text-align: center;
         }
-        
-        .submit-btn:hover {
-            background: #1a3a5a; /* Cor mais escura ao passar o mouse */
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        
-        .back-link {
-            display: inline-block;
-            margin-top: 30px;
-            color: #2a5a8a;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        
-        .back-link:hover {
-            color: #FFD700;
-        }
-        
-        footer {
-            background-color: #222;
-            color: white;
-            padding: 40px 5%;
-            text-align: center;
-        }
-        
-        .footer-content p {
-            margin-bottom: 10px;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        
-        .social-links a {
-            color: white;
-            background: #444;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-        
-        .social-links a:hover {
-            background: #FFD700;
-            color: #222;
+
+        .btn-submit:hover {
             transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
         }
-        
-        @media (max-width: 768px) {
-            .revendedor-header {
-                padding: 100px 5% 40px;
+
+        /* Efeitos de Partículas */
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            background: var(--secondary);
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: float-particle linear infinite;
+        }
+
+        @keyframes float-particle {
+            0% {
+                transform: translateY(0) translateX(0);
+                opacity: 0;
             }
-            
-            .revendedor-header h1 {
-                font-size: 2rem;
+            50% {
+                opacity: 0.5;
             }
-            
-            .revendedor-form {
-                padding: 30px 20px;
-            }
-            
-            .nav-menu a {
-                margin-left: 15px;
-                font-size: 0.9rem;
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
             }
         }
-        
-        @media (max-width: 480px) {
-            .logo-container {
-                flex-direction: column;
-                padding: 10px;
+
+        /* Responsivo */
+        @media (max-width: 992px) {
+            .form-container {
+                grid-template-columns: 1fr;
             }
             
-            .logo-container img {
-                margin-bottom: 10px;
+            .form-content {
+                max-width: 100%;
+                text-align: center;
             }
             
-            .nav-menu {
-                width: 100%;
+            .benefit-item {
                 justify-content: center;
             }
             
-            .revendedor-header {
-                padding: 80px 5% 30px;
-                margin-top: 80px;
+            .hero-form {
+                padding: 120px 0 80px;
             }
         }
 
-        .cta-button {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: #2a5a8a; /* Cor padrão */
-            color: white;
-            text-decoration: none;
-            font-size: 1rem;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.2s;
-            text-align: center;
+        @media (max-width: 768px) {
+            .form-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .revendedor-form {
+                padding: 30px;
+            }
         }
 
-        .cta-button:hover {
-            background-color: #1a3a5a; /* Cor mais escura ao passar o mouse */
-            transform: translateY(-2px);
-        }
-
-        .button-container {
-            text-align: center; /* Centraliza o botão */
-            margin-top: 20px;
+        @media (max-width: 576px) {
+            .form-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .form-title h2 {
+                font-size: 1.8rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Cabeçalho com link para voltar -->
-    <div class="logo-container">
-        <a href="index.html">
-            <img src="./assets/Logo SUDU transparente.png" alt="SUDU">
-        </a>
-        <nav class="nav-menu">
-            <a href="index.html"><i class="fas fa-arrow-left"></i> Voltar ao Site</a>
-        </nav>
-    </div>
-
-    <!-- Formulário -->
-    <header class="revendedor-header">
-        <h1>TORNE-SE UM REVENDEDOR SUDU</h1>
-        <p>Preencha o formulário abaixo para fazer parte da nossa rede exclusiva de revendedores</p>
-    </header>
-
-    <div class="form-container">
-        <div class="revendedor-form">
-            <h2 class="form-title">CADASTRO DE REVENDEDOR</h2>
-            
-            <form id="revendedorForm">
-                <div class="form-group">
-                    <label for="nome">NOME COMPLETO*</label>
-                    <input type="text" id="nome" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="empresa">NOME DA EMPRESA*</label>
-                    <input type="text" id="empresa" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="cnpj">CNPJ*</label>
-                    <input type="text" id="cnpj" placeholder="00.000.000/0000-00" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="email">E-MAIL*</label>
-                    <input type="email" id="email" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="telefone">TELEFONE*</label>
-                    <input type="tel" id="telefone" placeholder="(00) 0000-0000" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="whatsapp">WHATSAPP (OPCIONAL)</label>
-                    <input type="tel" id="whatsapp" placeholder="(00) 00000-0000">
-                </div>
-                
-                <div class="form-group">
-                    <label for="estado">ESTADO*</label>
-                    <select id="estado" required>
-                        <option value="">Selecione seu estado</option>
-                        <option>AC</option>
-                        <option>AL</option>
-                        <option>AP</option>
-                        <option>AM</option>
-                        <option>BA</option>
-                        <option>CE</option>
-                        <option>DF</option>
-                        <option>ES</option>
-                        <option>GO</option>
-                        <option>MA</option>
-                        <option>MT</option>
-                        <option>MS</option>
-                        <option>MG</option>
-                        <option>PA</option>
-                        <option>PB</option>
-                        <option>PR</option>
-                        <option>PE</option>
-                        <option>PI</option>
-                        <option>RJ</option>
-                        <option>RN</option>
-                        <option>RS</option>
-                        <option>RO</option>
-                        <option>RR</option>
-                        <option>SC</option>
-                        <option>SP</option>
-                        <option>SE</option>
-                        <option>TO</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="cidade">CIDADE*</label>
-                    <input type="text" id="cidade" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="experiencia">POSSUI EXPERIÊNCIA COMO REVENDEDOR?*</label>
-                    <select id="experiencia" required>
-                        <option value="">Selecione uma opção</option>
-                        <option>Sim, mais de 2 anos</option>
-                        <option>Sim, menos de 2 anos</option>
-                        <option>Não, sou iniciante</option>
-                    </select>
-                </div>
-                
-                <div class="form-group">
-                    <label for="mensagem">POR QUE QUER SER UM REVENDEDOR SUDU?*</label>
-                    <textarea id="mensagem" placeholder="Descreva seus objetivos e expectativas" required></textarea>
-                </div>
-                
-                <button type="submit" class="submit-btn">
-                    <i class="fas fa-paper-plane"></i> ENVIAR CADASTRO
-                </button>
-            </form>
-            
-            <!-- Link de volta para a página principal -->
-            <a href="index.html" class="back-link">
-                <i class="fas fa-arrow-left"></i> VOLTAR PARA O SITE PRINCIPAL
+    <!-- Efeito de Partículas -->
+    <div class="particles" id="particles"></div>
+    
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <div class="logo-icon"></div>
+                <div class="logo-text">SUDU<span>TECH</span></div>
             </a>
         </div>
-    </div>
+    </header>
 
-    <!-- Seção Seja Revendedor -->
-    <section class="become-partner section">
+    <!-- Hero Section com Formulário -->
+    <section class="hero-form">
+        <img src="./assets/932A9778.jpg" alt="Moto Elétrica SUDUTECH" class="hero-form-bg">
         <div class="container">
-            <h2 class="section-title">Seja um Revendedor SUDU</h2>
-            <p>
-                Junte-se à nossa rede de revendedores e aproveite oportunidades exclusivas no mercado de mobilidade elétrica, que cresce mais de 30% ao ano no Brasil.
-            </p>
-            <div class="button-container">
-                <a href="formulario-revendedor.html" class="cta-button">Quero Ser Revendedor</a>
+            <div class="form-container">
+                <div class="form-content">
+                    <h1>Seja um Revendedor SUDUTECH</h1>
+                    <p>Junte-se à rede de revendedores que está liderando a revolução da mobilidade elétrica no Brasil. Oferecemos oportunidades excepcionais para empreendedores visionários.</p>
+                    
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <h3>Lucratividade Garantida</h3>
+                                <p>Margens de lucro atrativas e política de preços competitivos</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-medal"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <h3>Produto Premium</h3>
+                                <p>Revenda motos elétricas de alta tecnologia e design exclusivo</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <h3>Suporte Completo</h3>
+                                <p>Treinamentos, materiais de marketing e suporte técnico especializado</p>
+                            </div>
+                        </div>
+                        
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <h3>Mercado em Expansão</h3>
+                                <p>Setor de mobilidade elétrica com crescimento superior a 30% ao ano</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="revendedor-form">
+                    <div class="form-title">
+                        <h2>Cadastre-se</h2>
+                        <p>Preencha o formulário para iniciar seu processo de credenciamento</p>
+                    </div>
+                    
+                    <form id="revendedorForm">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo*</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="empresa">Nome da Empresa (se aplicável)</label>
+                            <input type="text" id="empresa" name="empresa">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">E-mail*</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="telefone">Telefone/WhatsApp*</label>
+                            <input type="tel" id="telefone" name="telefone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="cidade">Cidade/Estado*</label>
+                            <input type="text" id="cidade" name="cidade" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="experiencia">Tem experiência com revenda de veículos?*</label>
+                            <select id="experiencia" name="experiencia" required>
+                                <option value="">Selecione...</option>
+                                <option value="sim">Sim</option>
+                                <option value="nao">Não</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="espaco">Possui espaço físico para exposição?*</label>
+                            <select id="espaco" name="espaco" required>
+                                <option value="">Selecione...</option>
+                                <option value="sim">Sim</option>
+                                <option value="nao">Não</option>
+                                <option value="planeja">Planeja adquirir</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="investimento">Nível de investimento inicial pretendido*</label>
+                            <select id="investimento" name="investimento" required>
+                                <option value="">Selecione...</option>
+                                <option value="ate50">Até R$ 50.000</option>
+                                <option value="50-100">R$ 50.000 - R$ 100.000</option>
+                                <option value="100-200">R$ 100.000 - R$ 200.000</option>
+                                <option value="acima200">Acima de R$ 200.000</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="mensagem">Por que você quer ser um revendedor SUDUTECH?*</label>
+                            <textarea id="mensagem" name="mensagem" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">Enviar Candidatura</button>
+                    </form>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer>
-        <div class="footer-content">
-            <p><i class="fas fa-map-marker-alt"></i> Rua das Motos Elétricas, 123 - São Paulo/SP</p>
-            <p><i class="fas fa-phone"></i> (11) 1234-5678 | <i class="fas fa-whatsapp"></i> (11) 98765-4321</p>
-            <p><i class="fas fa-envelope"></i> contato@sudu.com.br</p>
-            
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
-            
-            <p style="margin-top: 20px;">SUDU &copy; 2023 - Todos os direitos reservados</p>
-        </div>
-    </footer>
-
     <script>
-        // Máscaras para formulário
-        function aplicarMascara(input, pattern) {
-            input.addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\D/g, '');
-                let formatted = '';
+        // Efeito de partículas
+        function createParticles() {
+            const particlesContainer = document.getElementById('particles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
                 
-                for (let i = 0, j = 0; i < pattern.length && j < value.length; i++) {
-                    if (pattern[i] === '9') {
-                        formatted += value[j++] || '';
-                    } else {
-                        formatted += pattern[i];
-                    }
-                }
+                const size = Math.random() * 3 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
                 
-                e.target.value = formatted;
-            });
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.bottom = `-${size}px`;
+                
+                const duration = Math.random() * 10 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                particle.style.animationDelay = `${Math.random() * 10}s`;
+                
+                particlesContainer.appendChild(particle);
+            }
         }
 
-        // Aplicar máscaras
-        aplicarMascara(document.getElementById('cnpj'), '99.999.999/9999-99');
-        aplicarMascara(document.getElementById('telefone'), '(99) 9999-9999');
-        aplicarMascara(document.getElementById('whatsapp'), '(99) 99999-9999');
+        // Iniciar partículas quando a página carregar
+        window.addEventListener('load', createParticles);
 
-        // Validação do formulário
-        document.getElementById('revendedorForm').addEventListener('submit', function(e) {
+        // Formulário de revendedor
+        const revendedorForm = document.getElementById('revendedorForm');
+        revendedorForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Validação simples
-            let isValid = true;
-            const requiredFields = this.querySelectorAll('[required]');
-            
-            requiredFields.forEach(field => {
-                if (!field.value.trim()) {
-                    field.style.borderColor = 'red';
-                    isValid = false;
-                } else {
-                    field.style.borderColor = '#ddd';
-                }
+            // Simulação de envio
+            const formData = new FormData(this);
+            const formObject = {};
+            formData.forEach((value, key) => {
+                formObject[key] = value;
             });
             
-            if (isValid) {
-                // Simular envio (substitua por AJAX/API real)
-                alert('Cadastro enviado com sucesso!\nNossa equipe entrará em contato em até 48h.');
+            console.log('Dados do formulário:', formObject);
+            
+            // Feedback visual
+            const submitBtn = this.querySelector('button[type="submit"]');
+            submitBtn.innerHTML = '<i class="fas fa-check"></i> Enviado com Sucesso';
+            submitBtn.style.background = '#4CAF50';
+            submitBtn.disabled = true;
+            
+            // Simular redirecionamento após 2 segundos
+            setTimeout(() => {
+                alert('Obrigado por seu interesse em se tornar um revendedor SUDUTECH! Nossa equipe entrará em contato em até 48 horas.');
                 this.reset();
-                
-                // Rolar para o topo após envio
-                window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth'
-                });
-            } else {
-                alert('Por favor, preencha todos os campos obrigatórios!');
-            }
+                submitBtn.innerHTML = 'Enviar Candidatura';
+                submitBtn.style.background = '';
+                submitBtn.disabled = false;
+            }, 2000);
         });
 
-        // Auto-foco no primeiro campo quando a página carrega
-        document.addEventListener('DOMContentLoaded', function() {
-            document.getElementById('nome').focus();
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(10, 10, 10, 0.95)';
+            } else {
+                header.style.background = 'rgba(10, 10, 10, 0.9)';
+            }
         });
     </script>
 </body>
