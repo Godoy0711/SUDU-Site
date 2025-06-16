@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUDUTECH - Mobilidade Elétrica Futurista</title>
+    <title>SUDUTECH</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -128,11 +128,11 @@
         }
 
         /* Header */
-        header {
+        header {/
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
+            width: 70%;
             z-index: 1000;
             padding: 25px 0;
             transition: all 0.4s ease;
@@ -251,6 +251,13 @@
             z-index: 1001;
         }
 
+        .nav-menu {
+            display: flex;
+            justify-content: center; /* Centraliza o menu horizontalmente */
+            gap: 20px; /* Mantém o espaçamento entre os itens do menu */
+            margin: 0 auto; /* Garante que o menu fique no centro */
+        }
+
         /* Hero Section */
         .hero {
             height: 100vh;
@@ -323,6 +330,30 @@
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-30px); }
+        }
+
+        .hero-carousel {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .hero-carousel img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        .hero-carousel img.active {
+            opacity: 1;
         }
 
         /* Destaques */
@@ -615,7 +646,7 @@
         .contact-info h3 {
             font-size: 2rem;
             margin-bottom: 25px;
-            background: linear-gradient(90deg, var(--secondary), var(--accent));
+            background: linear-gradient(90deg, var (--secondary), var(--accent));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -668,7 +699,7 @@
             height: 50px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            color: var(--light);
+            color: var (--light);
             font-size: 1.2rem;
             transition: all 0.3s ease;
         }
@@ -950,6 +981,40 @@
                 opacity: 0;
             }
         }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column; /* Organiza os itens em coluna */
+            align-items: center; /* Centraliza horizontalmente */
+            padding: 10px 5%;
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center; /* Centraliza os itens do menu */
+            gap: 20px; /* Espaçamento entre os itens */
+            margin-top: 10px; /* Espaçamento entre o logo e o menu */
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333; /* Cor do texto */
+            font-size: 16px;
+            font-weight: bold;
+            padding: 5px 10px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #2a5a8a; /* Cor ao passar o mouse */
+        }
+
+        /* Controle do tamanho da logo */
+        .logo-img {
+            width: 67px; /* Ajuste a largura conforme necessário */
+            height: auto; /* Mantém a proporção da imagem */
+            max-height: 80px; /* Opcional: limite máximo de altura */
+        }
     </style>
 </head>
 <body>
@@ -960,7 +1025,8 @@
     <header id="header">
         <div class="container header-container">
             <a href="#" class="logo">
-                <div class="logo-icon"></div>
+                <img src="./assets/Logo SUDU transparente.png" alt="Logo da Empresa" class="logo-img" />
+                
                 <div class="logo-text">SUDU<span>TECH</span></div>
             </a>
             
@@ -981,18 +1047,24 @@
 
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <img src="./assets/932A9778.jpg" alt="Moto Elétrica SUDUTECH" class="hero-bg">
+        <div class="hero-carousel">
+            <video autoplay muted loop class="hero-bg">
+                <source src="./assets/Design sem nome.mp4" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+            <img src="./assets/ab13aa6f-5d14-4008-bdb5-c08ff24ada05.jpg" alt="Banner 2" class="hero-bg">
+           <!-- <img src="" alt="Banner 3" class="hero-bg"> -->
+        </div>
         <div class="container">
             <div class="hero-content">
-                <h1>Revolucione sua mobilidade</h1>
-                <p>A SUDUTECH está liderando a revolução elétrica com motos de alto desempenho, tecnologia avançada e design futurista. Experimente o futuro do transporte urbano.</p>
+               
+                
                 <div class="hero-btns">
-                    <a href="/catalogo.html" class="btn">Explorar Modelos</a>
-                    <a href="./formulario-revendedor.html" class="btn btn-outline">Seja Revendedor</a>
+                   
+                  
                 </div>
             </div>
         </div>
-        <img src="" alt="" class="hero-image">
     </section>
 
     <!-- Destaques -->
@@ -1273,6 +1345,22 @@
             alert('Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.');
             this.reset();
         });
+
+        // Carrossel de imagens
+        const images = document.querySelectorAll('.hero-carousel img');
+        let currentIndex = 0;
+
+        function showNextImage() {
+            images[currentIndex].classList.remove('active');
+            currentIndex = (currentIndex + 1) % images.length;
+            images[currentIndex].classList.add('active');
+        }
+
+        // Alterna as imagens a cada 5 segundos
+        setInterval(showNextImage, 5000);
+
+        // Exibe a primeira imagem ao carregar
+        images[currentIndex].classList.add('active');
     </script>
 </body>
 </html>
