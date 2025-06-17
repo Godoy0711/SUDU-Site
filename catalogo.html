@@ -31,12 +31,11 @@
             background-color: var(--dark);
             color: var(--light);
             font-family: 'Montserrat', sans-serif;
-            overflow-x: auto;
+            overflow-x: hidden;
         }
 
         .container {
             width: 100%;
-            min-width: 1400px;
             padding: 0 30px;
         }
 
@@ -214,8 +213,15 @@
                 padding: 0 15px;
             }
             
+            .catalog-container {
+                flex-direction: column;
+                gap: 20px;
+                align-items: center;
+            }
+            
             .moto-card {
-                min-width: 300px;
+                min-width: 90vw;
+                width: 100%;
             }
             
             .catalog-title h2 {

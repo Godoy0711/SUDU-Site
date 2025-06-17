@@ -140,7 +140,7 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 70%;
+            width: 100%; /* Corrija aqui */
             z-index: 1000;
             padding: 25px 0;
             transition: all 0.4s ease;
@@ -883,61 +883,24 @@
         }
 
         @media (max-width: 768px) {
-            .mobile-menu {
-                display: block;
-            }
-            
-            nav ul {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 80%;
-                max-width: 300px;
-                height: 100vh;
-                background: var(--dark);
-                flex-direction: column;
-                padding: 100px 30px;
-                transition: right 0.4s ease;
-                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
-            }
-            
-            nav ul.show {
-                right: 0;
-            }
-            
-            nav ul li {
-                margin: 0 0 20px 0;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .hero-btns {
-                flex-direction: column;
-            }
-            
-            .btn-outline {
-                margin-left: 0;
-                margin-top: 15px;
-            }
-            
-            .hero-image {
-                display: none;
-            }
-            
-            .models-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .section-title h2 {
-                font-size: 2.5rem;
-            }
-        }
+            .features-grid,
+    .models-grid,
+    .stats,
+    .footer-container,
+    .about-content,
+    .contact-container {
+        grid-template-columns: 1fr !important;
+        gap: 20px;
+    }
+    .feature-card,
+    .model-card,
+    .about-img,
+    .about-text,
+    .contact-info,
+    .contact-form {
+        padding: 15px !important;
+    }
+}
 
         @media (max-width: 576px) {
             .hero h1 {
@@ -1023,6 +986,12 @@
             height: auto; /* Mantém a proporção da imagem */
             max-height: 80px; /* Opcional: limite máximo de altura */
         }
+
+        img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
     </style>
 </head>
 <body>
