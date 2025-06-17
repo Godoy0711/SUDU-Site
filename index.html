@@ -74,21 +74,20 @@
         }
 
         .header-container {
-            display: grid;
-            grid-template-columns: auto 1fr auto;
+            display: flex;
             align-items: center;
             width: 100%;
-            padding-left: 0;
-            padding-right: 0;
+            position: relative;
+            min-height: 70px;
         }
 
         .logo {
-            justify-self: start;
-            margin-left: 0;
-            padding-left: 0;
             display: flex;
             align-items: center;
-            gap: 8px;
+            margin-right: 0;
+            margin-left: 0;
+            padding-left: 0;
+            flex: 0 0 auto;
         }
 
         .logo-img {
@@ -105,11 +104,19 @@
             margin-left: 10px;
         }
 
-        nav {
-            justify-self: center;
-            width: 100%;
+        .menu-center-wrapper {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
             display: flex;
-            justify-content: center;
+            align-items: center;
+            height: 100%;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
         }
 
         nav ul {
@@ -117,6 +124,8 @@
             justify-content: center;
             align-items: center;
             gap: 30px;
+            padding: 0;
+            margin: 0;
         }
 
         nav ul li a {
@@ -150,12 +159,12 @@
         }
 
         .mobile-menu {
+            margin-left: auto;
+            z-index: 1101;
             display: none;
             font-size: 2rem;
             color: var(--light);
             cursor: pointer;
-            z-index: 1101;
-            justify-self: end;
         }
 
         /* Hero Section */
@@ -476,6 +485,19 @@
             .stats { grid-template-columns: 1fr 1fr 1fr; }
         }
 
+        @media (max-width: 900px) {
+            .menu-center-wrapper {
+                position: static;
+                transform: none;
+                width: 100%;
+                justify-content: center;
+            }
+            .header-container {
+                flex-direction: row;
+                justify-content: space-between;
+            }
+        }
+
         @media (max-width: 768px) {
             html { font-size: 15px; }
             header { padding: 10px 0; }
@@ -534,18 +556,20 @@
                 <img src="./assets/Logo SUDU transparente.png" alt="Logo da Empresa" class="logo-img" />
                 <div class="logo-text">SUDU</div>
             </a>
-            <nav>
-                <div class="mobile-menu" id="mobile-menu">
-                    <i class="fas fa-bars"></i>
-                </div>
-                <ul id="nav-menu">
-                    <li><a href="#home">Início</a></li>
-                    <li><a href="./catalogo.html">Modelos</a></li>
-                    <li><a href="#features">Vantagens</a></li>
-                    <li><a href="#about">Sobre</a></li>
-                    <li><a href="./formulario-revendedor.html">Seja Revendedor</a></li>
-                </ul>
-            </nav>
+            <div class="menu-center-wrapper">
+                <nav>
+                    <ul id="nav-menu">
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="./catalogo.html">Modelos</a></li>
+                        <li><a href="#features">Vantagens</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="./formulario-revendedor.html">Seja Revendedor</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="mobile-menu" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
         </div>
     </header>
 
