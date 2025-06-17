@@ -11,21 +11,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #000000; /* Preto */
-            --secondary: #FFD700; /* Amarelo (tom principal) */
-            --accent: #FFEA70; /* Amarelo claro para contraste */
-            --dark: #0A0A0A; /* Fundo escuro */
-            --light: #FFFFFF; /* Branco */
-            --gray: #1E1E1E; /* Cinza escuro */
-            --gradient: linear-gradient(135deg, var(--secondary), var(--accent)); /* Gradiente amarelo */
+            --primary: #000000;
+            --secondary: #FFD700;
+            --accent: #FFEA70;
+            --dark: #0A0A0A;
+            --light: #FFFFFF;
+            --gray: #1E1E1E;
+            --gradient: linear-gradient(135deg, var(--secondary), var(--accent));
         }
 
-        /* Reset e Estilos Globais */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             scroll-behavior: smooth;
+        }
+
+        html {
+            font-size: 16px;
         }
 
         body {
@@ -35,122 +38,39 @@
             overflow-x: hidden;
         }
 
-        h1, h2, h3, h4 {
-            /* ...existing code... */
-            .logo-text {
-                font-family: 'Nunito', Arial, sans-serif;
-                font-weight: 800; /* ou 900 se tiver disponível */
-                font-size: 1.8rem;
-                color: var(--light);
-            }
-            /* ...existing code... */            font-family: 'Nunito', Arial, sans-serif;
-            font-weight: 700;
+        img, video {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         .container {
             width: 100%;
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 30px;
+            padding: 0 20px;
         }
 
         section {
-            padding: 100px 0;
+            padding: 80px 0;
             position: relative;
         }
 
-        .btn {
-            display: inline-block;
-            background: var(--gradient);
-            color: var(--primary);
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
+        h1, h2, h3, h4 {
+            font-family: 'Nunito', Arial, sans-serif;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 14px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, var(--accent), var(--secondary));
-            z-index: -1;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            opacity: 0;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
-        }
-
-        .btn:hover:before {
-            opacity: 1;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--secondary);
-            color: var(--secondary);
-            margin-left: 15px;
-        }
-
-        .btn-outline:hover {
-            color: var(--primary);
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 80px;
-            position: relative;
-        }
-
-        .section-title h2 {
-            font-size: 3.5rem;
-            background: linear-gradient(90deg, var(--secondary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            display: inline-block;
-            margin-bottom: 20px;
-        }
-
-        .section-title p {
-            color: rgba(255, 255, 255, 0.7);
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1.1rem;
-            line-height: 1.6;
         }
 
         /* Header */
-        header {/
+        header {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%; /* Corrija aqui */
+            width: 100%;
             z-index: 1000;
-            padding: 25px 0;
+            padding: 20px 0;
+            background: rgba(10, 10, 10, 0.95);
             transition: all 0.4s ease;
-        }
-
-        header.scrolled {
-            background-color: rgba(10, 10, 10, 0.9);
-            backdrop-filter: blur(10px);
-            padding: 15px 0;
-            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
         }
 
         .header-container {
@@ -165,61 +85,24 @@
             text-decoration: none;
         }
 
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            margin-right: 10px;
-            position: relative;
-        }
-
-        .logo-icon:before, .logo-icon:after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border: 3px solid var(--secondary);
-            border-radius: 50%;
-            border-top-color: transparent;
-            border-right-color: transparent;
-            animation: rotate 6s linear infinite;
-        }
-
-        .logo-icon:before {
-            top: 0;
-            left: 0;
-            animation-delay: 0s;
-        }
-
-        .logo-icon:after {
-            bottom: 0;
-            right: 0;
-            animation-delay: -1.5s;
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+        .logo-img {
+            width: 50px;
+            height: auto;
+            max-height: 60px;
         }
 
         .logo-text {
             font-family: 'Nunito', Arial, sans-serif;
-            font-weight: 800; /* ou 900 se tiver disponível */
-            font-size: 1.8rem;
+            font-weight: 800;
+            font-size: 1.5rem;
             color: var(--light);
-        }
-
-        .logo-text span {
-            color: var(--secondary);
+            margin-left: 10px;
         }
 
         nav ul {
             display: flex;
             list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 40px;
-            position: relative;
+            gap: 30px;
         }
 
         nav ul li a {
@@ -228,19 +111,20 @@
             font-weight: 500;
             font-size: 1rem;
             letter-spacing: 1px;
-            transition: all 0.3s ease;
+            transition: color 0.3s;
             position: relative;
+            padding: 8px 0;
         }
 
         nav ul li a:after {
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
             width: 0;
             height: 2px;
             background: var(--gradient);
-            transition: width 0.3s ease;
+            transition: width 0.3s;
         }
 
         nav ul li a:hover {
@@ -253,91 +137,20 @@
 
         .mobile-menu {
             display: none;
-            font-size: 1.5rem;
+            font-size: 2rem;
             color: var(--light);
             cursor: pointer;
-            z-index: 1001;
-        }
-
-        .nav-menu {
-            display: flex;
-            justify-content: center; /* Centraliza o menu horizontalmente */
-            gap: 20px; /* Mantém o espaçamento entre os itens do menu */
-            margin: 0 auto; /* Garante que o menu fique no centro */
+            z-index: 1101;
         }
 
         /* Hero Section */
         .hero {
-            height: 100vh;
-            min-height: 800px;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding-top: 0;
-        }
-
-        .hero:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.1), transparent 50%);
-            z-index: -1;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -2;
-            opacity: 0.3;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero h1 {
-            font-size: 5rem;
-            line-height: 1.1;
-            margin-bottom: 30px;
-            background: linear-gradient(90deg, var(--light), var(--secondary));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8;
-        }
-
-        .hero-btns {
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-image {
-            position: absolute;
-            right: 0;
-            bottom: 0;
-            width: 60%;
-            max-width: 900px;
-            z-index: -1;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-30px); }
+            padding-top: 80px;
         }
 
         .hero-carousel {
@@ -347,96 +160,61 @@
             width: 100%;
             height: 100%;
             overflow: hidden;
+            z-index: -2;
         }
 
-        .hero-carousel img {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .hero-bg {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
+            opacity: 0.3;
         }
 
-        .hero-carousel img.active {
-            opacity: 1;
+        .hero-content {
+            max-width: 700px;
         }
 
-        /* Destaques */
-        .features {
-            position: relative;
-            overflow: hidden;
+        .hero h1 {
+            font-size: 3rem;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            background: linear-gradient(90deg, var(--light), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        .features:before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            left: -100px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 255, 209, 0.1), transparent 70%);
-            z-index: -1;
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.6;
         }
 
-        .features:after {
-            content: '';
-            position: absolute;
-            bottom: -100px;
-            right: -100px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.1), transparent 70%);
-            z-index: -1;
-        }
-
+        /* Features */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 colunas */
-            gap: 20px; /* Espaçamento entre os cards */
-            justify-items: center; /* Centraliza os cards horizontalmente */
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
         }
 
         .feature-card {
-            background: rgba(30, 30, 30, 0.6);
-            border-radius: 20px;
-            padding: 40px 30px;
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 16px;
+            padding: 32px 20px;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 255, 209, 0.1));
-            z-index: -1;
-            opacity: 0;
-            transition: all 0.4s ease;
+            transition: box-shadow 0.3s, transform 0.3s;
+            border: 1px solid rgba(255,255,255,0.08);
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
-            border-color: rgba(255, 215, 0, 0.3);
-        }
-
-        .feature-card:hover:before {
-            opacity: 1;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            transform: translateY(-6px);
         }
 
         .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 25px;
+            font-size: 2.5rem;
+            margin-bottom: 18px;
             background: var(--gradient);
             -webkit-background-clip: text;
             background-clip: text;
@@ -444,149 +222,101 @@
         }
 
         .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
             color: var(--light);
         }
 
         .feature-card p {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255,255,255,0.7);
             font-size: 1rem;
         }
 
-        /* Modelos */
-        .models {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .models:before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            height: 80%;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.05), transparent 70%);
-            z-index: -1;
-        }
-
+        /* Models */
         .models-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
         }
 
         .model-card {
-            background: rgba(30, 30, 30, 0.6);
-            border-radius: 20px;
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 16px;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
+            transition: box-shadow 0.3s, transform 0.3s;
+            border: 1px solid rgba(255,255,255,0.08);
         }
 
         .model-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            border-color: rgba(0, 255, 209, 0.3);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            transform: translateY(-6px);
         }
 
         .model-img {
-            height: 250px;
+            height: 200px;
             overflow: hidden;
-            position: relative;
         }
 
         .model-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-
-        .model-card:hover .model-img img {
-            transform: scale(1.1);
         }
 
         .model-info {
-            padding: 30px;
+            padding: 20px;
         }
 
         .model-info h3 {
-            font-size: 1.8rem;
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
             color: var(--light);
         }
 
         .model-specs {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px;
-            color: rgba(255, 255, 255, 0.7);
-        }
-
-        .model-specs span {
-            display: flex;
-            align-items: center;
+            margin-bottom: 10px;
+            color: rgba(255,255,255,0.7);
+            font-size: 0.95rem;
         }
 
         .model-specs i {
-            margin-right: 8px;
+            margin-right: 6px;
             color: var(--secondary);
         }
 
         .model-price {
-            font-size: 2rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            margin-bottom: 25px;
             background: var(--gradient);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
-        /* Sobre */
-        .about {
-            position: relative;
-        }
-
+        /* About */
         .about-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 40px;
             align-items: center;
         }
 
         .about-img {
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
-            position: relative;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
         }
 
         .about-img img {
             width: 100%;
             height: auto;
-            display: block;
-        }
-
-        .about-img:after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 255, 209, 0.1));
-            z-index: 1;
         }
 
         .about-text h2 {
-            font-size: 3rem;
-            margin-bottom: 25px;
+            font-size: 2.2rem;
+            margin-bottom: 18px;
             background: linear-gradient(90deg, var(--secondary), var(--accent));
             -webkit-background-clip: text;
             background-clip: text;
@@ -594,17 +324,17 @@
         }
 
         .about-text p {
-            margin-bottom: 20px;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-            font-size: 1.1rem;
+            margin-bottom: 14px;
+            color: rgba(255,255,255,0.7);
+            line-height: 1.7;
+            font-size: 1rem;
         }
 
         .stats {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin-top: 40px;
+            gap: 16px;
+            margin-top: 24px;
         }
 
         .stat-item {
@@ -612,9 +342,8 @@
         }
 
         .stat-number {
-            font-size: 2.5rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 5px;
             background: var(--gradient);
             -webkit-background-clip: text;
             background-clip: text;
@@ -622,147 +351,29 @@
         }
 
         .stat-label {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255,255,255,0.7);
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
 
-        /* Contato */
-        .contact {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact:before {
-            content: '';
-            position: absolute;
-            top: -100px;
-            left: -100px;
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(0, 255, 209, 0.1), transparent 70%);
-            z-index: -1;
-        }
-
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-
-        .contact-info h3 {
-            font-size: 2rem;
-            margin-bottom: 25px;
-            background: linear-gradient(90deg, var (--secondary), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .contact-info p {
-            margin-bottom: 30px;
-            color: rgba(255, 255, 255, 0.7);
-            line-height: 1.8;
-        }
-
-        .contact-details {
-            margin-bottom: 40px;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--gradient);
-            color: var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            font-size: 1.2rem;
-            flex-shrink: 0;
-        }
-
-        .contact-text {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            color: var (--light);
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-        }
-
-        .social-links a:hover {
-            background: var(--gradient);
-            color: var(--primary);
-            transform: translateY(-5px);
-        }
-
-        .contact-form input,
-        .contact-form textarea,
-        .contact-form select {
-            width: 100%;
-            padding: 15px 20px;
-            margin-bottom: 20px;
-            background: rgba(30, 30, 30, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            color: var(--light);
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus,
-        .contact-form select:focus {
-            outline: none;
-            border-color: var(--secondary);
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
-        }
-
-        .contact-form textarea {
-            height: 150px;
-            resize: vertical;
-        }
-
         /* Footer */
         footer {
-            background: linear-gradient(to bottom, rgba(10, 10, 10, 0), var(--dark));
-            padding: 100px 0 30px;
+            background: linear-gradient(to bottom, rgba(10,10,10,0), var(--dark));
+            padding: 60px 0 20px;
             position: relative;
         }
 
         .footer-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 32px;
+            margin-bottom: 40px;
         }
 
         .footer-col h3 {
-            font-size: 1.5rem;
-            margin-bottom: 25px;
+            font-size: 1.1rem;
+            margin-bottom: 18px;
             color: var(--light);
             position: relative;
             display: inline-block;
@@ -771,17 +382,18 @@
         .footer-col h3:after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: -8px;
             left: 0;
-            width: 50px;
-            height: 3px;
+            width: 40px;
+            height: 2px;
             background: var(--gradient);
         }
 
         .footer-col p {
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 20px;
-            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 14px;
+            line-height: 1.6;
+            font-size: 0.98rem;
         }
 
         .footer-col ul {
@@ -789,46 +401,44 @@
         }
 
         .footer-col ul li {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .footer-col ul li a {
-            color: rgba(255, 255, 255, 0.7);
+            color: rgba(255,255,255,0.7);
             text-decoration: none;
-            transition: all 0.3s ease;
+            transition: color 0.3s;
             display: inline-block;
         }
 
         .footer-col ul li a:hover {
             color: var(--secondary);
-            transform: translateX(5px);
         }
 
         .newsletter-form {
             display: flex;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         .newsletter-form input {
             flex: 1;
-            padding: 15px 20px;
-            background: rgba(30, 30, 30, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px 0 0 10px;
+            padding: 10px 14px;
+            background: rgba(30,30,30,0.7);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px 0 0 8px;
             color: var(--light);
             font-size: 1rem;
-            backdrop-filter: blur(10px);
         }
 
         .newsletter-form button {
             background: var(--gradient);
             color: var(--primary);
             border: none;
-            padding: 0 25px;
-            border-radius: 0 10px 10px 0;
+            padding: 0 18px;
+            border-radius: 0 8px 8px 0;
             cursor: pointer;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
+            font-size: 1.1rem;
+            transition: opacity 0.3s;
         }
 
         .newsletter-form button:hover {
@@ -837,204 +447,63 @@
 
         .copyright {
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.92rem;
         }
 
         /* Responsivo */
-        @media (max-width: 1200px) {
-            .hero h1 {
-                font-size: 4rem;
-            }
-            
-            .hero-image {
-                width: 50%;
-                opacity: 0.5;
-            }
-        }
-
         @media (max-width: 992px) {
-            .hero {
-                min-height: 700px;
-            }
-            
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-            
-            .hero-content {
-                max-width: 600px;
-            }
-            
-            .about-content,
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .about-img {
-                order: -1;
-            }
-            
-            .section-title h2 {
-                font-size: 3rem;
-            }
+            .container { padding: 0 10px; }
+            .features-grid { grid-template-columns: 1fr 1fr; }
+            .about-content { grid-template-columns: 1fr; gap: 24px; }
+            .stats { grid-template-columns: 1fr 1fr 1fr; }
         }
 
         @media (max-width: 768px) {
-            .mobile-menu {
-                display: block;
-            }
-            
+            html { font-size: 15px; }
+            header { padding: 10px 0; }
+            .logo-img { width: 40px; max-height: 50px; }
+            .logo-text { font-size: 1.1rem; }
+            .header-container { flex-direction: row; }
+            .mobile-menu { display: block; }
             nav ul {
                 position: fixed;
                 top: 0;
                 right: -100%;
-                width: 80%;
-                max-width: 300px;
+                width: 80vw;
+                max-width: 320px;
                 height: 100vh;
                 background: var(--dark);
                 flex-direction: column;
-                padding: 100px 30px;
-                transition: right 0.4s ease;
-                box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+                align-items: flex-start;
+                padding: 80px 30px 30px 30px;
+                transition: right 0.4s;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+                z-index: 1100;
+                gap: 0;
             }
-            
-            nav ul.show {
-                right: 0;
-            }
-            
-            nav ul li {
-                margin: 0 0 20px 0;
-            }
-            
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .hero-btns {
-                flex-direction: column;
-            }
-            
-            .btn-outline {
-                margin-left: 0;
-                margin-top: 15px;
-            }
-            
-            .hero-image {
-                display: none;
-            }
-            
-            .models-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .section-title h2 {
-                font-size: 2.5rem;
-            }
+            nav ul.show { right: 0; }
+            nav ul li { margin: 0 0 18px 0; width: 100%; }
+            nav ul li a { font-size: 1.1rem; width: 100%; display: block; padding: 10px 0; text-align: left; }
+            .features-grid, .models-grid, .footer-container, .stats { grid-template-columns: 1fr; }
+            .about-content { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 2rem; }
+            .hero-content { max-width: 100%; }
+            section { padding: 50px 0; }
         }
 
         @media (max-width: 576px) {
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            
-            .stats {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-container {
-                grid-template-columns: 1fr;
-            }
+            html { font-size: 14px; }
+            .container { padding: 0 4px; }
+            .hero h1 { font-size: 1.3rem; }
+            .footer-col h3 { font-size: 1rem; }
+            .footer-col p, .footer-col ul li a { font-size: 0.95rem; }
         }
-
-        /* Efeitos de Partículas */
-        .particles {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            overflow: hidden;
-        }
-
-        .particle {
-            position: absolute;
-            background: var(--secondary);
-            border-radius: 50%;
-            opacity: 0.5;
-            animation: float-particle linear infinite;
-        }
-
-        @keyframes float-particle {
-            0% {
-                transform: translateY(0) translateX(0);
-                opacity: 0;
-            }
-            50% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(-100vh) translateX(100px);
-                opacity: 0;
-            }
-        }
-
-        .logo-container {
-            display: flex;
-            flex-direction: column; /* Organiza os itens em coluna */
-            align-items: center; /* Centraliza horizontalmente */
-            padding: 10px 5%;
-        }
-
-        .nav-menu {
-            display: flex;
-            justify-content: center; /* Centraliza os itens do menu */
-            gap: 20px; /* Espaçamento entre os itens */
-            margin-top: 10px; /* Espaçamento entre o logo e o menu */
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: #333; /* Cor do texto */
-            font-size: 16px;
-            font-weight: bold;
-            padding: 5px 10px;
-            transition: color 0.3s ease;
-        }
-
-        .nav-menu a:hover {
-            color: #2a5a8a; /* Cor ao passar o mouse */
-        }
-
-        /* Controle do tamanho da logo */
-        .logo-img {
-            width: 67px; /* Ajuste a largura conforme necessário */
-            height: auto; /* Mantém a proporção da imagem */
-            max-height: 80px; /* Opcional: limite máximo de altura */
-        }
-
-        img, video {
-    max-width: 100%;
-    height: auto;
-    display: block;
-}
     </style>
 </head>
 <body>
-    <!-- Efeito de Partículas -->
-    <div class="particles" id="particles"></div>
-    
     <!-- Header -->
     <header id="header">
         <div class="container header-container">
@@ -1042,7 +511,6 @@
                 <img src="./assets/Logo SUDU transparente.png" alt="Logo da Empresa" class="logo-img" />
                 <div class="logo-text">SUDU</div>
             </a>
-            
             <nav>
                 <div class="mobile-menu" id="mobile-menu">
                     <i class="fas fa-bars"></i>
@@ -1066,16 +534,10 @@
                 Seu navegador não suporta vídeos HTML5.
             </video>
             <img src="./assets/ab13aa6f-5d14-4008-bdb5-c08ff24ada05.jpg" alt="Banner 2" class="hero-bg">
-           <!-- <img src="" alt="Banner 3" class="hero-bg"> -->
         </div>
         <div class="container">
             <div class="hero-content">
-               
-                
-                <div class="hero-btns">
-                   
-                  
-                </div>
+                <!-- Adicione seu conteúdo principal aqui -->
             </div>
         </div>
     </section>
@@ -1087,61 +549,40 @@
                 <h2>Tecnologia sem Limites</h2>
                 <p>Descubra as vantagens exclusivas das motos elétricas SUDUTECH</p>
             </div>
-            
             <div class="features-grid">
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
                     <h3>Potência Instantânea</h3>
                     <p>Aceleração imediata com torque máximo desde a partida, proporcionando uma experiência de pilotagem emocionante.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-infinity"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-infinity"></i></div>
                     <h3>Eficiência Infinita</h3>
                     <p>Tecnologia de ponta que maximiza a autonomia e reduz o consumo energético ao mínimo possível.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-brain"></i></div>
                     <h3>Inteligência Artificial</h3>
                     <p>Sistema de aprendizado contínuo que adapta o desempenho ao seu estilo de pilotagem e condições da via.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-mobile-alt"></i></div>
                     <h3>Conectividade Total</h3>
                     <p>Integração completa com seu smartphone via app SUDUTECH, com atualizações over-the-air e diagnóstico remoto.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
                     <h3>Segurança Avançada</h3>
                     <p>Sistema de estabilidade dinâmica, frenagem regenerativa e assistentes de pilotagem para máxima segurança.</p>
                 </div>
-                
                 <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-leaf"></i>
-                    </div>
+                    <div class="feature-icon"><i class="fas fa-leaf"></i></div>
                     <h3>Sustentabilidade</h3>
                     <p>Zero emissões e materiais recicláveis em toda a estrutura, com baterias de última geração e vida útil estendida.</p>
                 </div>
             </div>
         </div>
     </section>
-
-   
-   
 
     <!-- Sobre -->
     <section class="about" id="about">
@@ -1152,7 +593,6 @@
                     <p>A SUDUTECH nasceu da paixão por tecnologia e mobilidade sustentável. Nossa missão é transformar o transporte urbano através de soluções elétricas inteligentes, combinando desempenho excepcional com responsabilidade ambiental.</p>
                     <p>Com centros de pesquisa e desenvolvimento em três continentes, estamos constantemente avançando os limites da tecnologia de mobilidade elétrica. Cada moto SUDUTECH é o resultado de anos de pesquisa e inovação.</p>
                     <p>Nossa visão é criar um futuro onde o transporte seja limpo, silencioso e emocionante - sem comprometer o planeta para as próximas gerações.</p>
-                    
                     <div class="stats">
                         <div class="stat-item">
                             <div class="stat-number">5+</div>
@@ -1175,72 +615,6 @@
         </div>
     </section>
 
-    <!-- Contato -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <div class="section-title">
-                <h2>Nos Contate</h2>
-                <p>Entre em contato com nossa equipe para mais informações</p>
-            </div>
-            
-            <div class="contact-container">
-                <div class="contact-info">
-                    <h3>Tire suas duvidas aqui</h3>
-                    <p>Saiba mais detalhes e tire duvidas com a nossa equipe especializada.</p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <span class="contact-text">Rua Martini, 292 - Bloco B1 - São Bernardo do Campo, SP<br>  CEP 09623030</span>
-                        </div>
-                        
-                       <!-- <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <span class="contact-text">(11) 4002-8922</span>
-                        </div> -->
-                        
-                        <div class="contact-item">
-                            <div class="contact-icon">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <span class="contact-text">atendimendo@sudutech.com.br</span>
-                        </div>
-                    </div>
-                    
-                    <h3>Siga a SUDUTECH</h3>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                    </div>
-                </div>
-                
-                <div class="contact-form">
-                    <form id="contactForm">
-                        <input type="text" placeholder="Seu Nome" required>
-                        <input type="email" placeholder="Seu E-mail" required>
-                        <input type="tel" placeholder="Seu Telefone">
-                        <select required>
-                            <option value="">Assunto</option>
-                            <option>Agendar Test Ride</option>
-                            <option>Informações sobre modelos</option>
-                            <option>Financiamento</option>
-                            <option>Manutenção</option>
-                            <option>Outro</option>
-                        </select>
-                        <textarea placeholder="Sua Mensagem" required></textarea>
-                        <button type="submit" class="btn">Enviar Mensagem</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -1248,9 +622,7 @@
                 <div class="footer-col">
                     <h3>SUDU</h3>
                     <p>Liderando a revolução da mobilidade elétrica com tecnologia de ponta, design inovador e compromisso com a sustentabilidade.</p>
-                    
                 </div>
-                
                 <div class="footer-col">
                     <h3>Modelos</h3>
                     <ul>
@@ -1260,7 +632,6 @@
                         <li><a href="#">Próximos Lançamentos</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-col">
                     <h3>Links Úteis</h3>
                     <ul>
@@ -1271,7 +642,6 @@
                         <li><a href="#">Trabalhe Conosco</a></li>
                     </ul>
                 </div>
-                
                 <div class="footer-col">
                     <h3>Newsletter</h3>
                     <p>Assine para receber as últimas novidades, lançamentos e ofertas exclusivas da SUDUTECH.</p>
@@ -1281,7 +651,6 @@
                     </form>
                 </div>
             </div>
-            
             <div class="copyright">
                 <p>&copy; 2023 SUDUTECH. Todos os direitos reservados. | Desenvolvido com <i class="fas fa-heart" style="color: var(--accent);"></i> pela equipe SUDUTECH</p>
             </div>
@@ -1316,46 +685,6 @@
             }
         });
 
-        // Efeito de partículas
-        function createParticles() {
-            const particlesContainer = document.getElementById('particles');
-            const particleCount = 30;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.classList.add('particle');
-                
-                // Tamanho aleatório entre 2px e 5px
-                const size = Math.random() * 3 + 2;
-                particle.style.width = `${size}px`;
-                particle.style.height = `${size}px`;
-                
-                // Posição inicial aleatória
-                particle.style.left = `${Math.random() * 100}%`;
-                particle.style.bottom = `-${size}px`;
-                
-                // Duração da animação aleatória entre 10s e 20s
-                const duration = Math.random() * 10 + 10;
-                particle.style.animationDuration = `${duration}s`;
-                
-                // Atraso aleatório para começar a animação
-                particle.style.animationDelay = `${Math.random() * 10}s`;
-                
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        // Iniciar partículas quando a página carregar
-        window.addEventListener('load', createParticles);
-
-        // Formulário de contato
-        const contactForm = document.getElementById('contactForm');
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Mensagem enviada com sucesso! Nossa equipe entrará em contato em breve.');
-            this.reset();
-        });
-
         // Carrossel de imagens
         const images = document.querySelectorAll('.hero-carousel img');
         let currentIndex = 0;
@@ -1366,10 +695,7 @@
             images[currentIndex].classList.add('active');
         }
 
-        // Alterna as imagens a cada 5 segundos
         setInterval(showNextImage, 5000);
-
-        // Exibe a primeira imagem ao carregar
         images[currentIndex].classList.add('active');
     </script>
 </body>
