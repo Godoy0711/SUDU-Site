@@ -77,8 +77,9 @@
             display: flex;
             align-items: center;
             width: 100%;
-            position: relative;
             min-height: 70px;
+            position: relative;
+            justify-content: flex-start;
         }
 
         .logo {
@@ -88,6 +89,7 @@
             margin-left: 0;
             padding-left: 0;
             flex: 0 0 auto;
+            z-index: 2;
         }
 
         .logo-img {
@@ -105,13 +107,21 @@
         }
 
         .menu-center-wrapper {
+            flex: 1 1 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             position: absolute;
             left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            display: flex;
-            align-items: center;
+            top: 0;
+            transform: translateX(-50%);
             height: 100%;
+            width: 100%;
+            pointer-events: none; /* permite clique apenas nos filhos */
+        }
+
+        .menu-center-wrapper nav {
+            pointer-events: auto;
         }
 
         nav {
@@ -160,7 +170,7 @@
 
         .mobile-menu {
             margin-left: auto;
-            z-index: 1101;
+            z-index: 3;
             display: none;
             font-size: 2rem;
             color: var(--light);
@@ -491,6 +501,7 @@
                 transform: none;
                 width: 100%;
                 justify-content: center;
+                pointer-events: auto;
             }
             .header-container {
                 flex-direction: row;
