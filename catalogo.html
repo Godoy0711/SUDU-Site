@@ -65,10 +65,6 @@
             align-items: center;
             text-decoration: none;
         }
-<a href="#" class="logo">
-    <img src="./assets/Logo SUDU transparente.png" alt="Logo da Empresa" class="logo-img" style="width:50px; height:auto; max-height:60px; margin-right:10px;" />
-    <div class="logo-text">SUDU<span>TECH</span></div>
-</a>
         .logo-img {
             width: 50px;
             height: auto;
@@ -251,7 +247,7 @@
     <!-- Header -->
     <header id="header" role="banner">
         <div class="container header-container">
-            <a href="index.html" class="logo">
+            <a href="#" class="logo">
                 <img src="./assets/Logo SUDU transparente.png" alt="Logo da Empresa" class="logo-img" />
                 <div class="logo-text">SUDU<span>TECH</span></div>
             </a>
@@ -261,31 +257,16 @@
                         <i class="fas fa-bars"></i>
                     </div>
                     <ul id="nav-menu">
-                        <li><a href="index.html#home">Início</a></li>
-                        <li><a href="catalogo.html">Modelos</a></li>
-                        <li><a href="index.html#features">Vantagens</a></li>
-                        <li><a href="index.html#about">Sobre</a></li>
-                        <li><a href="formulario-revendedor.html">Seja Revendedor</a></li>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="./catalogo.html">Modelos</a></li>
+                        <li><a href="#features">Vantagens</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="./formulario-revendedor.html">Seja Revendedor</a></li>
                     </ul>
                 </nav>
             </div>
         </div>
     </header>
-
-    <!-- Cabeçalho -->
-    <div class="logo-container">
-        <a href="index.html">
-            <img src="./assets/Logo_SUDU_transparente.png" alt="Logo da Sudu">
-        </a>
-        <nav class="nav-menu">
-            <a href="formulario-revendedor.html">Quero Ser Revendedor</a>
-            <a href="sobre.html">Sobre nós</a>
-            <a href="catalogo.html">Catálogo</a>
-            <a href="#testimonials">Depoimentos</a>
-            <a href="#contact">Contato</a>
-            <a href="#partners">Revendedores</a>
-        </nav>
-    </div>
 
     <!-- Catálogo Horizontal -->
     <section class="catalog-section">
@@ -412,6 +393,25 @@
     </section>
 
     <script>
+        // Menu Mobile
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navMenu = document.getElementById('nav-menu');
+
+        mobileMenu.addEventListener('click', function() {
+            navMenu.classList.toggle('show');
+            const expanded = navMenu.classList.contains('show');
+            mobileMenu.setAttribute('aria-expanded', expanded);
+            mobileMenu.innerHTML = expanded ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Fechar menu ao clicar em um link
+        document.querySelectorAll('#nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('show');
+                mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
         // Efeito de rolagem suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
@@ -429,7 +429,6 @@
                 card.style.transform = 'translateY(-10px)';
                 card.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 215, 0, 0.7)';
             });
-            
             card.addEventListener('mouseleave', () => {
                 card.style.transform = '';
                 card.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
