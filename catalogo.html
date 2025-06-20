@@ -65,7 +65,6 @@
             width: 100%;
             padding-left: 0;
         }
-
         .logo {
             position: static;
             left: unset;
@@ -76,21 +75,6 @@
             z-index: 2;
             padding-right: 80px;
         }
-
-        .logo-img {
-            width: 50px;
-            height: auto;
-            max-height: 60px;
-        }
-
-        .logo-text {
-            font-family: 'Nunito', Arial, sans-serif;
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--light);
-            margin-left: 10px;
-        }
-
         .menu-center-wrapper {
             flex: 1 1 auto;
             display: flex;
@@ -101,19 +85,12 @@
             width: 100%;
             pointer-events: auto;
         }
-
         .menu-center-wrapper nav {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
         }
-
-        nav {
-            display: flex;
-            align-items: center;
-        }
-
         nav ul {
             display: flex;
             justify-content: center;
@@ -122,7 +99,9 @@
             padding: 0;
             margin: 0;
         }
-
+        nav ul li {
+            list-style: none;
+        }
         nav ul li a {
             text-decoration: none;
             color: var(--light);
@@ -133,7 +112,6 @@
             position: relative;
             padding: 8px 0;
         }
-
         nav ul li a:after {
             content: '';
             position: absolute;
@@ -144,15 +122,12 @@
             background: var(--gradient);
             transition: width 0.3s;
         }
-
         nav ul li a:hover {
             color: var(--secondary);
         }
-
         nav ul li a:hover:after {
             width: 100%;
         }
-
         .mobile-menu {
             margin-left: auto;
             z-index: 3;
@@ -326,7 +301,7 @@
     <!-- Header -->
     <header id="header" role="banner">
         <div class="container header-container">
-            <a href="#" class="logo">
+            <a href="./index.html#home" class="logo">
                 <img src="./assets/Logo SUDU transparente.png" alt="Logo da Empresa" class="logo-img" />
                 <div class="logo-text">SUDU<span>TECH</span></div>
             </a>
@@ -336,10 +311,10 @@
                         <i class="fas fa-bars"></i>
                     </div>
                     <ul id="nav-menu">
-                        <li><a href="#home">Início</a></li>
+                        <li><a href="./index.html#home">Início</a></li>
                         <li><a href="./catalogo.html">Modelos</a></li>
-                        <li><a href="#features">Vantagens</a></li>
-                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="./index.html#features">Vantagens</a></li>
+                        <li><a href="./index.html#about">Sobre</a></li>
                         <li><a href="./formulario-revendedor.html">Seja Revendedor</a></li>
                     </ul>
                 </nav>
