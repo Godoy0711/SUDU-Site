@@ -68,7 +68,7 @@
             align-items: center;
             text-decoration: none;
             padding-right: 0;
-            margin-right: 40px;
+            margin-right: 0;
         }
         .logo-img {
             width: 48px;
@@ -98,6 +98,7 @@
             display: flex;
             justify-content: flex-end;
             align-items: center;
+            width: auto;
         }
         .menu-center-wrapper nav {
             display: flex;
@@ -356,12 +357,12 @@
     
     <!-- Header -->
     <header id="header" role="banner">
-        <div class="container header-container">
-            <a href="#" class="logo">
+        <div class="container header-container" style="justify-content: space-between;">
+            <a href="#" class="logo" style="margin-right: 0; padding-right: 0;">
                 <img src="./assets/Logo SUDU transparente.png" alt="Logo da Empresa" class="logo-img" />
                 <div class="logo-text">SUDU<span>TECH</span></div>
             </a>
-            <div class="menu-center-wrapper">
+            <div class="menu-center-wrapper" style="flex: 1 1 auto; display: flex; justify-content: flex-end; align-items: center; width: auto;">
                 <nav>
                     <div class="mobile-menu" id="mobile-menu">
                         <i class="fas fa-bars"></i>
