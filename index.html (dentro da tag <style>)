@@ -16,7 +16,13 @@
         max-height: 40px;
     }
     .logo-text {
-        font-size: 1.1rem;
+        font-family: 'Nunito', Arial, sans-serif;
+        font-weight: 800;
+        font-size: 1.8rem;
+        color: var(--light);
+    }
+    .logo-text span {
+        color: var(--secondary);
     }
     nav ul {
         width: 100vw;
