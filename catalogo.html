@@ -40,7 +40,7 @@
             padding: 0 20px;
         }
 
-        /* Header igual ao index.html */
+        /* Header/menu idêntico ao index.html */
         header {
             position: fixed;
             top: 0;
@@ -222,15 +222,23 @@
         }
 
         .catalog-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: stretch;
             gap: 32px;
             padding: 20px 0;
-            justify-content: center;
             width: 100%;
         }
 
         .moto-card {
+            flex: 1 1 320px;
+            max-width: 370px;
+            min-width: 320px;
+            display: flex;
+            flex-direction: column;
+            justify-content: stretch;
+            align-items: stretch;
             background: #181818;
             border-radius: 16px;
             overflow: hidden;
