@@ -61,21 +61,21 @@
             width: 100%;
         }
         .logo {
+            position: static;
+            left: unset;
+            top: unset;
+            transform: none;
             display: flex;
             align-items: center;
-            text-decoration: none;
+            z-index: 2;
             padding-right: 80px;
-            margin-right: 0;
         }
         .logo-img {
-            width: 48px;
+            width: 50px;
             height: auto;
-            max-height: 56px;
-            filter: drop-shadow(0 0 8px var(--secondary));
-            transition: filter 0.3s;
-        }
-        .logo-img:hover {
-            filter: drop-shadow(0 0 16px var(--secondary));
+            max-height: 60px;
+            filter: none;
+            transition: none;
         }
         .logo-text {
             font-family: 'Nunito', Arial, sans-serif;
@@ -83,19 +83,22 @@
             font-size: 1.5rem;
             color: var(--light);
             margin-left: 10px;
-            letter-spacing: 2px;
-            text-shadow: 0 0 8px var(--secondary);
+            letter-spacing: 0;
+            text-shadow: none;
         }
         .logo-text span {
             color: var(--secondary);
-            text-shadow: 0 0 12px var(--secondary);
+            text-shadow: none;
         }
         .menu-center-wrapper {
             flex: 1 1 auto;
             display: flex;
             justify-content: center;
             align-items: center;
+            position: static;
+            transform: none;
             width: 100%;
+            pointer-events: auto;
         }
         .menu-center-wrapper nav {
             display: flex;
@@ -117,13 +120,13 @@
         nav ul li a {
             text-decoration: none;
             color: var(--light);
-            font-weight: 600;
-            font-size: 1.1rem;
+            font-weight: 500;
+            font-size: 1rem;
             letter-spacing: 1px;
-            transition: color 0.3s, text-shadow 0.3s;
+            transition: color 0.3s;
             position: relative;
             padding: 8px 0;
-            text-shadow: 0 0 8px #000, 0 0 2px var(--secondary);
+            text-shadow: none;
         }
         nav ul li a:after {
             content: '';
@@ -137,10 +140,17 @@
         }
         nav ul li a:hover {
             color: var(--secondary);
-            text-shadow: 0 0 12px var(--secondary), 0 0 2px #fff;
         }
         nav ul li a:hover:after {
             width: 100%;
+        }
+        .mobile-menu {
+            margin-left: auto;
+            z-index: 3;
+            display: none;
+            font-size: 2rem;
+            color: var(--light);
+            cursor: pointer;
         }
 
         /* Seção do Catálogo Horizontal */
@@ -328,10 +338,17 @@
                 padding-right: 0;
                 margin-bottom: 0;
             }
+            .logo-img {
+                width: 40px;
+                max-height: 50px;
+            }
+            .logo-text {
+                font-size: 1.1rem;
+            }
             .menu-center-wrapper nav ul {
                 flex-direction: column;
-                gap: 20px;
-                background: #111;
+                gap: 0;
+                background: var(--dark);
                 position: fixed;
                 top: 0;
                 right: -100%;
