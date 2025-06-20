@@ -169,18 +169,18 @@
             font-family: 'Nunito', Arial, sans-serif;
             font-size: 3rem;
             font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--secondary);
             margin-bottom: 15px;
-            text-shadow: 0 0 18px var(--secondary), 0 0 2px #fff;
+            text-shadow: none;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
         }
 
         .catalog-title p {
             color: var(--accent);
             font-size: 1.2rem;
-            text-shadow: 0 0 8px var(--secondary);
+            text-shadow: none;
         }
 
         .catalog-container {
@@ -196,16 +196,16 @@
             background: rgba(30, 30, 30, 0.8);
             border-radius: 20px;
             overflow: hidden;
-            border: 2px solid transparent;
-            transition: all 0.3s cubic-bezier(.4,2,.3,1);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4), 0 0 12px var(--secondary);
+            border: 1px solid #333;
+            transition: box-shadow 0.3s;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
             position: relative;
         }
 
         .moto-card:hover {
             transform: scale(1.04) translateY(-12px);
-            border: 2px solid var(--secondary);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 32px var(--secondary);
+            border: 1.5px solid var(--secondary);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
             z-index: 2;
         }
 
@@ -213,33 +213,33 @@
             height: 250px;
             overflow: hidden;
             position: relative;
-            background: linear-gradient(120deg, #222 60%, var(--secondary) 100%);
+            background: #222;
         }
 
         .moto-image img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s cubic-bezier(.4,2,.3,1);
-            filter: brightness(1.08) drop-shadow(0 0 8px var(--secondary));
+            transition: transform 0.5s;
+            filter: brightness(1.08);
         }
 
         .moto-card:hover .moto-image img {
             transform: scale(1.08);
-            filter: brightness(1.15) drop-shadow(0 0 16px var(--secondary));
+            filter: brightness(1.15);
         }
 
         .moto-badge {
             position: absolute;
             top: 20px;
             right: 20px;
-            background: var(--gradient);
+            background: var(--secondary);
             color: var(--primary);
             padding: 7px 18px;
             border-radius: 50px;
             font-weight: 800;
             font-size: 1rem;
-            box-shadow: 0 0 12px var(--secondary);
+            box-shadow: none;
             letter-spacing: 1px;
         }
 
@@ -254,7 +254,7 @@
             font-weight: 800;
             margin-bottom: 10px;
             color: var(--light);
-            text-shadow: 0 0 8px var(--secondary);
+            text-shadow: none;
         }
 
         .moto-specs {
@@ -275,23 +275,23 @@
             color: var(--secondary);
             width: 25px;
             font-size: 1.2rem;
-            filter: drop-shadow(0 0 4px var(--secondary));
+            filter: none;
         }
 
         .moto-price {
             font-size: 2.2rem;
             font-weight: 800;
-            background: var(--gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            color: var(--secondary);
             margin: 20px 0;
-            text-shadow: 0 0 12px var(--secondary);
+            text-shadow: none;
+            background: none;
+            -webkit-background-clip: unset;
+            background-clip: unset;
         }
 
         .btn {
             display: inline-block;
-            background: var(--gradient);
+            background: var(--secondary);
             color: var(--primary);
             padding: 14px 36px;
             border-radius: 50px;
@@ -300,17 +300,16 @@
             text-transform: uppercase;
             letter-spacing: 1px;
             font-size: 1rem;
-            transition: all 0.3s cubic-bezier(.4,2,.3,1);
+            transition: background 0.3s, color 0.3s, border 0.3s;
             border: none;
             cursor: pointer;
-            box-shadow: 0 0 12px var(--secondary);
+            box-shadow: none;
         }
 
         .btn:hover {
             transform: scale(1.08) translateY(-2px);
-            box-shadow: 0 0 24px var(--secondary), 0 10px 20px rgba(255,215,0,0.3);
-            color: var(--secondary);
             background: var(--dark);
+            color: var(--secondary);
             border: 2px solid var(--secondary);
         }
 
