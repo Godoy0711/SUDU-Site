@@ -81,23 +81,23 @@
 
         .header-container {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             align-items: center;
             position: relative;
             min-height: 70px;
             width: 100%;
-            padding-left: 80px; /* ainda mais isolamento da logo */
+            padding-left: 0; /* remove isolamento extra */
         }
 
         .logo {
-            position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
+            position: static; /* remove absolute */
+            left: unset;
+            top: unset;
+            transform: none;
             display: flex;
             align-items: center;
             z-index: 2;
-            padding-right: 80px; /* afastamento maior entre logo e menu */            padding-right: 80px; /* afastamento maior entre logo e menu */
+            padding-right: 80px; /* mantém afastamento do menu */
         }
 
         .logo-img {
