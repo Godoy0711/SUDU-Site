@@ -53,9 +53,6 @@
             z-index: 1000;
             background-color: #111;
             padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
         }
 
@@ -63,19 +60,13 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            position: relative;
             min-height: 70px;
             width: 100%;
-            padding-left: 0;
         }
         .logo {
-            position: static;
-            left: unset;
-            top: unset;
-            transform: none;
             display: flex;
             align-items: center;
-            z-index: 2;
+            text-decoration: none;
             padding-right: 80px;
         }
         .logo-img {
@@ -90,15 +81,14 @@
             color: var(--light);
             margin-left: 10px;
         }
+        .logo-text span {
+            color: var(--secondary);
+        }
         .menu-center-wrapper {
-            flex: 0 1 auto;
+            flex: 1 1 auto;
             display: flex;
             justify-content: center;
             align-items: center;
-            position: static;
-            transform: none;
-            width: auto;
-            pointer-events: auto;
         }
         .menu-center-wrapper nav {
             display: flex;
@@ -155,20 +145,12 @@
         /* Seção do Catálogo Horizontal */
         .catalog-section {
             padding: 150px 0 100px;
-            overflow-x: auto;
+            width: 100%;
         }
 
         .catalog-title {
             text-align: center;
             margin-bottom: 50px;
-            width: 100%;
-        }
-
-        .catalog-container {
-            display: flex;
-            gap: 30px;
-            padding: 20px 0;
-            justify-content: center;
             width: 100%;
         }
 
@@ -183,9 +165,16 @@
             margin-bottom: 15px;
         }
 
-        /* Cards de Moto - Lado a Lado */
+        .catalog-container {
+            display: flex;
+            gap: 30px;
+            padding: 20px 0;
+            justify-content: center;
+            width: 100%;
+        }
+
         .moto-card {
-            min-width: 400px;
+            min-width: 340px;
             background: rgba(30, 30, 30, 0.6);
             border-radius: 20px;
             overflow: hidden;
@@ -289,25 +278,45 @@
         }
 
         /* Responsividade */
+        @media (max-width: 1024px) {
+            .catalog-container {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+            .moto-card {
+                min-width: 320px;
+            }
+        }
         @media (max-width: 768px) {
             .container {
                 min-width: 100%;
-                padding: 0 15px;
+                padding: 0 10px;
             }
-            
-            .catalog-container {
+            .header-container {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 0;
+            }
+            .logo {
+                padding-right: 0;
+                margin-bottom: 10px;
+            }
+            .menu-center-wrapper nav ul {
                 flex-direction: column;
                 gap: 20px;
-                align-items: center;
+                background: #111;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100vw;
+                padding: 30px 0;
+                display: none;
             }
-            
-            .moto-card {
-                min-width: 90vw;
-                width: 100%;
+            .menu-center-wrapper nav ul.show {
+                display: flex;
             }
-            
-            .catalog-title h2 {
-                font-size: 2.2rem;
+            .mobile-menu {
+                display: block;
             }
         }
     </style>
@@ -319,7 +328,7 @@
     <!-- Header -->
     <header id="header" role="banner">
         <div class="container header-container">
-            <a href="./index.html#home" class="logo">
+            <a href="#" class="logo">
                 <img src="./assets/Logo SUDU transparente.png" alt="Logo da Empresa" class="logo-img" />
                 <div class="logo-text">SUDU<span>TECH</span></div>
             </a>
@@ -329,10 +338,10 @@
                         <i class="fas fa-bars"></i>
                     </div>
                     <ul id="nav-menu">
-                        <li><a href="./index.html#home">Início</a></li>
+                        <li><a href="#home">Início</a></li>
                         <li><a href="./catalogo.html">Modelos</a></li>
-                        <li><a href="./index.html#features">Vantagens</a></li>
-                        <li><a href="./index.html#about">Sobre</a></li>
+                        <li><a href="#features">Vantagens</a></li>
+                        <li><a href="#about">Sobre</a></li>
                         <li><a href="./formulario-revendedor.html">Seja Revendedor</a></li>
                     </ul>
                 </nav>
@@ -481,19 +490,6 @@
             link.addEventListener('click', () => {
                 navMenu.classList.remove('show');
                 mobileMenu.innerHTML = '<i class="fas fa-bars"></i>';
-            });
-        });
-
-        // Efeito de hover nos cards
-        const motoCards = document.querySelectorAll('.moto-card');
-        motoCards.forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.transform = 'translateY(-10px)';
-                card.style.boxShadow = '0 15px 40px rgba(0, 0, 0, 0.4), 0 0 10px rgba(255, 215, 0, 0.7)';
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = '';
-                card.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.3)';
             });
         });
     </script>
