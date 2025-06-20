@@ -40,7 +40,7 @@
             padding: 0 20px;
         }
 
-        /* Header Moderno */
+        /* Header igual ao index.html */
         header {
             position: fixed;
             top: 0;
@@ -49,15 +49,19 @@
             z-index: 1000;
             background-color: #111;
             padding: 1rem 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+        .header-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
             min-height: 70px;
             width: 100%;
+            padding-left: 0;
         }
         .logo {
             position: static;
@@ -113,9 +117,6 @@
             padding: 0;
             margin: 0;
         }
-        nav ul li {
-            list-style: none;
-        }
         nav ul li a {
             text-decoration: none;
             color: var(--light);
@@ -151,6 +152,46 @@
             color: var(--light);
             cursor: pointer;
         }
+        @media (max-width: 900px) {
+            .header-container {
+                justify-content: space-between;
+            }
+            .logo {
+                position: static;
+                transform: none;
+            }
+            .menu-center-wrapper {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+        @media (max-width: 768px) {
+            header { padding: 10px 0; }
+            .logo-img { width: 40px; max-height: 50px; }
+            .logo-text { font-size: 1.1rem; }
+            .header-container { grid-template-columns: auto 1fr auto; }
+            .mobile-menu { display: block; }
+            nav { justify-content: flex-end; }
+            nav ul {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80vw;
+                max-width: 320px;
+                height: 100vh;
+                background: var(--dark);
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 80px 30px 30px 30px;
+                transition: right 0.4s;
+                box-shadow: -5px 0 20px rgba(0,0,0,0.3);
+                z-index: 1100;
+                gap: 0;
+            }
+            nav ul.show { right: 0; }
+            nav ul li { margin: 0 0 18px 0; width: 100%; }
+            nav ul li a { font-size: 1.1rem; width: 100%; display: block; padding: 10px 0; text-align: left; }
+        }
 
         /* Seção do Catálogo Horizontal */
         .catalog-section {
@@ -166,48 +207,48 @@
 
         .catalog-title h2 {
             font-family: 'Nunito', Arial, sans-serif;
-            font-size: 3rem;
+            font-size: 2.2rem;
             font-weight: 800;
-            color: var(--secondary);
-            margin-bottom: 15px;
+            color: var(--light);
+            margin-bottom: 10px;
             background: none;
-            -webkit-background-clip: unset;
-            background-clip: unset;
+            text-shadow: none;
         }
 
         .catalog-title p {
-            color: var(--secondary);
-            font-size: 1.2rem;
+            color: #ccc;
+            font-size: 1.1rem;
+            text-shadow: none;
         }
 
         .catalog-container {
-            display: flex;
-            gap: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 32px;
             padding: 20px 0;
             justify-content: center;
             width: 100%;
         }
 
         .moto-card {
-            min-width: 340px;
-            background: rgba(30, 30, 30, 0.8);
-            border-radius: 20px;
+            background: #181818;
+            border-radius: 16px;
             overflow: hidden;
-            border: 1px solid #333;
-            transition: box-shadow 0.3s;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            border: 1px solid #222;
+            transition: box-shadow 0.3s, transform 0.3s;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.15);
             position: relative;
         }
 
         .moto-card:hover {
-            transform: scale(1.04) translateY(-12px);
+            transform: translateY(-8px) scale(1.03);
             border: 1.5px solid var(--secondary);
-            box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
             z-index: 2;
         }
 
         .moto-image {
-            height: 250px;
+            height: 200px;
             overflow: hidden;
             position: relative;
             background: #222;
@@ -222,63 +263,64 @@
         }
 
         .moto-card:hover .moto-image img {
-            transform: scale(1.08);
-            filter: brightness(1.15);
+            transform: scale(1.06);
+            filter: brightness(1.12);
         }
 
         .moto-badge {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--secondary);
-            color: var(--primary);
-            padding: 7px 18px;
+            top: 16px;
+            right: 16px;
+            background: #222;
+            color: var(--secondary);
+            padding: 6px 16px;
             border-radius: 50px;
-            font-weight: 800;
-            font-size: 1rem;
+            font-weight: 700;
+            font-size: 0.95rem;
+            border: 1px solid var(--secondary);
             letter-spacing: 1px;
         }
 
         .moto-info {
-            padding: 25px;
+            padding: 20px;
             text-align: center;
         }
 
         .moto-info h3 {
             font-family: 'Nunito', Arial, sans-serif;
-            font-size: 2rem;
+            font-size: 1.3rem;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
             color: var(--light);
             text-shadow: none;
         }
 
         .moto-specs {
-            margin: 20px 0;
+            margin: 16px 0;
         }
 
         .spec-item {
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 10px;
-            color: rgba(255,255,255,0.9);
-            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: #ccc;
+            font-size: 1rem;
             gap: 8px;
         }
 
         .spec-item i {
             color: var(--secondary);
-            width: 25px;
-            font-size: 1.2rem;
+            width: 22px;
+            font-size: 1.1rem;
             filter: none;
         }
 
         .moto-price {
-            font-size: 2.2rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--secondary);
-            margin: 20px 0;
+            margin: 14px 0;
             background: none;
             -webkit-background-clip: unset;
             background-clip: unset;
@@ -288,20 +330,19 @@
             display: inline-block;
             background: var(--secondary);
             color: var(--primary);
-            padding: 14px 36px;
+            padding: 10px 28px;
             border-radius: 50px;
             text-decoration: none;
-            font-weight: 800;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: background 0.3s, color 0.3s, border 0.3s;
             border: none;
             cursor: pointer;
         }
 
         .btn:hover {
-            transform: scale(1.08) translateY(-2px);
             background: var(--dark);
             color: var(--secondary);
             border: 2px solid var(--secondary);
