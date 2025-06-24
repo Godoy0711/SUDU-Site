@@ -625,7 +625,7 @@
             align-items: center;
             justify-content: center;
             flex-direction: column;
-            transition: opacity 2s;
+            transition: opacity 3.5s;
         }
         .preloader-logo {
             display: flex;
@@ -1102,7 +1102,7 @@
             document.body.classList.remove('preloader-blur');
             if (preloader) {
                 preloader.classList.add('fade-out');
-                setTimeout(() => { preloader.style.display = 'none'; }, 10000);
+                setTimeout(() => { preloader.style.display = 'none'; }, 50000);
             }
         });
     </script>
