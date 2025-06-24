@@ -658,6 +658,13 @@
             pointer-events: none;
         }
 
+        body.preloader-blur > *:not(#preloader):not(style) {
+            filter: blur(8px) grayscale(0.2);
+            transition: filter 0.7s;
+            pointer-events: none;
+            user-select: none;
+        }
+
         /* Responsivo */
         @media (max-width: 992px) {
             .container { padding: 0 10px; }
@@ -760,7 +767,7 @@
         }
     </style>
 </head>
-<body>
+<body class="preloader-blur">
     <!-- Efeito de Partículas -->
     <div class="particles" id="particles"></div>
     
@@ -1091,9 +1098,10 @@
         // Preloader
         window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
+            document.body.classList.remove('preloader-blur');
             if (preloader) {
                 preloader.classList.add('fade-out');
-                setTimeout(() => { preloader.style.display = 'none'; }, 700);
+                setTimeout(() => { preloader.style.display = 'none'; }, 2000);
             }
         });
     </script>
