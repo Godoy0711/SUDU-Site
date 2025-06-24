@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUDUTECH - Vantagens</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Nunito:wght@700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #000000;
+            --secondary: #FFD700;
+            --accent: #FFEA70;
+            --dark: #0A0A0A;
+            --light: #FFFFFF;
+            --gray: #1E1E1E;
+            --gradient: linear-gradient(135deg, var(--secondary), var(--accent));
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background: var(--dark); color: var(--light); font-family: 'Montserrat', sans-serif; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: #111; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
+        .header-container { display: flex; justify-content: center; align-items: center; width: 100%; }
+        .logo { display: flex; align-items: center; z-index: 2; padding-right: 80px; }
+        .logo-img { width: 50px; max-height: 60px; }
+        .logo-text { font-family: 'Nunito', Arial, sans-serif; font-weight: 800; font-size: 1.5rem; color: var(--light); margin-left: 10px; }
+        .logo-text span { color: var(--secondary); }
+        .menu-center-wrapper { flex: 1 1 auto; display: flex; justify-content: center; align-items: center; width: 100%; }
+        nav ul { display: flex; justify-content: center; align-items: center; gap: 64px; padding: 0; margin: 0; }
+        nav ul li a { text-decoration: none; color: var(--light); font-weight: 500; font-size: 1rem; letter-spacing: 1px; transition: color 0.3s; position: relative; padding: 8px 0; }
+        nav ul li a:after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 2px; background: var(--gradient); transition: width 0.3s; }
+        nav ul li a:hover { color: var(--secondary); }
+        nav ul li a:hover:after { width: 100%; }
+        .mobile-menu { display: none; }
+        @media (max-width: 900px) { .header-container { justify-content: space-between; } }
+        @media (max-width: 768px) { .logo-img { width: 40px; max-height: 50px; } .logo-text { font-size: 1.1rem; } nav ul { flex-direction: column; gap: 0; background: var(--dark); position: fixed; top: 0; right: -100%; width: 80vw; max-width: 320px; height: 100vh; padding: 80px 30px 30px 30px; box-shadow: -5px 0 20px rgba(0,0,0,0.3); z-index: 1100; align-items: flex-start; transition: right 0.4s; display: flex; } nav ul.show { right: 0; } nav ul li { margin: 0 0 18px 0; width: 100%; } nav ul li a { font-size: 1.1rem; width: 100%; display: block; padding: 10px 0; text-align: left; } .mobile-menu { display: block; } }
+        .vantagens-section { padding: 160px 0 80px; }
+        .vantagens-title { text-align: center; margin-bottom: 40px; }
+        .vantagens-title h2 { font-family: 'Nunito', Arial, sans-serif; font-size: 2.2rem; font-weight: 800; color: var(--light); margin-bottom: 10px; }
+        .vantagens-title p { color: #ccc; font-size: 1.1rem; }
+        .vantagens-list { display: flex; flex-wrap: wrap; justify-content: center; gap: 32px; margin-bottom: 40px; }
+        .vantagem-card { background: #181818; border-radius: 16px; padding: 32px 24px; max-width: 340px; min-width: 260px; flex: 1 1 260px; display: flex; flex-direction: column; align-items: center; box-shadow: 0 4px 16px rgba(0,0,0,0.15); border: 1px solid #222; }
+        .vantagem-card i { color: var(--secondary); font-size: 2.2rem; margin-bottom: 16px; }
+        .vantagem-card h3 { color: var(--light); font-size: 1.2rem; font-weight: 700; margin-bottom: 10px; }
+        .vantagem-card p { color: #ccc; font-size: 1rem; text-align: center; }
+        .vantagens-gallery { display: flex; flex-wrap: wrap; justify-content: center; gap: 24px; margin-bottom: 40px; }
+        .vantagens-gallery img { width: 320px; height: 200px; object-fit: cover; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.18); }
+        .apresentacao { background: #222; border-radius: 16px; padding: 32px 24px; max-width: 800px; margin: 0 auto; text-align: center; box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
+        .apresentacao h3 { color: var(--secondary); font-size: 1.5rem; margin-bottom: 16px; }
+        .apresentacao p { color: #eee; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+    <header id="header" role="banner">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <img src="./assets/Logo SUDU transparente.png" alt="Logo da Empresa" class="logo-img" />
+                <div class="logo-text">SUDU<span>TECH</span></div>
+            </a>
+            <div class="menu-center-wrapper">
+                <nav>
+                    <ul id="nav-menu">
+                        <li><a href="/SUDU-Site/index.html">Início</a></li>
+                        <li><a href="/SUDU-Site/catalogo.html">Modelos</a></li>
+                        <li><a href="/SUDU-Site/Vantagens.html">Vantagens</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="/SUDU-Site/formulario-revendedor.html">Seja Revendedor</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+    <section class="vantagens-section">
+        <div class="container">
+            <div class="vantagens-title">
+                <h2>Vantagens de ter uma SUDUTECH</h2>
+                <p>Conheça os diferenciais que só a SUDUTECH oferece para você!</p>
+            </div>
+            <div class="vantagens-list">
+                <div class="vantagem-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>Economia de Energia</h3>
+                    <p>Consumo muito baixo e recarga rápida, garantindo mais economia no seu dia a dia.</p>
+                </div>
+                <div class="vantagem-card">
+                    <i class="fas fa-leaf"></i>
+                    <h3>100% Ecológica</h3>
+                    <p>Zero emissão de poluentes, ajudando a preservar o meio ambiente.</p>
+                </div>
+                <div class="vantagem-card">
+                    <i class="fas fa-tools"></i>
+                    <h3>Manutenção Simples</h3>
+                    <p>Menos peças móveis, menos manutenção e mais tempo rodando.</p>
+                </div>
+                <div class="vantagem-card">
+                    <i class="fas fa-battery-full"></i>
+                    <h3>Bateria de Alta Durabilidade</h3>
+                    <p>Baterias modernas, com longa vida útil e recarga eficiente.</p>
+                </div>
+                <div class="vantagem-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Garantia e Suporte</h3>
+                    <p>Atendimento especializado e garantia de fábrica para sua tranquilidade.</p>
+                </div>
+                <div class="vantagem-card">
+                    <i class="fas fa-motorcycle"></i>
+                    <h3>Desempenho e Design</h3>
+                    <p>Alta performance, conforto e visual inovador para você se destacar.</p>
+                </div>
+            </div>
+            <div class="vantagens-gallery">
+                <img src="https://images.unsplash.com/photo-1591637333184-19aa84b3e01f?auto=format&fit=crop&w=800&q=80" alt="Moto SUDUTECH 1">
+                <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=800&q=80" alt="Moto SUDUTECH 2">
+                <img src="https://images.unsplash.com/photo-1621407348050-80e9a030d9c2?auto=format&fit=crop&w=800&q=80" alt="Moto SUDUTECH 3">
+            </div>
+            <div class="apresentacao">
+                <h3>Qualidade SUDUTECH</h3>
+                <p>Nossas motos são desenvolvidas com tecnologia de ponta, materiais de alta qualidade e rigorosos testes de segurança. Escolher SUDUTECH é investir em inovação, sustentabilidade e satisfação garantida. Venha fazer parte do futuro da mobilidade!</p>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
