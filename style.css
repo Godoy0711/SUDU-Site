@@ -1,0 +1,25 @@
+/* ...código existente... */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+/* Responsividade para dispositivos móveis */
+@media (max-width: 768px) {
+  .container {
+    padding: 8px;
+  }
+  h1 {
+    font-size: 1.5em;
+  }
+  /* Adapte outros elementos conforme necessário */
+}
+/* ...código existente... */
