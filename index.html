@@ -619,7 +619,7 @@
             top: 0; left: 0; right: 0; bottom: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(10, 10, 10, 0.98);
+            background: #000; /* totalmente escuro */
             z-index: 2000;
             display: flex;
             align-items: center;
@@ -649,7 +649,7 @@
         #preloader.fade-out {
             opacity: 0;
             pointer-events: none;
-            transition: opacity 2s;
+            transition: opacity 7s;
         }
 
         body.preloader-blur > *:not(#preloader):not(style) {
@@ -1094,7 +1094,7 @@
             document.body.classList.remove('preloader-blur');
             if (preloader) {
                 preloader.classList.add('fade-out');
-                setTimeout(() => { preloader.style.display = 'none'; }, 4000);
+                setTimeout(() => { preloader.style.display = 'none'; }, 9000);
             }
         });
     </script>
